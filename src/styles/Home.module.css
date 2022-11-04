@@ -5,10 +5,11 @@
   background-size: 360%;
   background-position: center;
   background-color: rgba(0,0,0,0.4);
+  min-height: 100vh
 }
 
 .main {
-  min-height: 100vh;
+  min-height: 88vh;
   padding: 4rem 0;
   flex: 1;
   display: flex;

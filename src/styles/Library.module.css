@@ -1,0 +1,30 @@
+.container {
+    background-image: url("../assets/images/main_bg.jpg");
+    background-blend-mode: color-dodge;
+    background-repeat: no-repeat;
+    background-size: 360%;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100vh;
+}
+.content {
+    height: 100vh;
+    backdrop-filter: blur(7px)
+}
+
+.main {
+    min-height: 81vh;
+    padding: 4rem 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.title {
+    font-size: 26px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
