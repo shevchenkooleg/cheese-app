@@ -1,5 +1,6 @@
 import s from '../styles/RecipeCard.module.css'
 import {MainInformationType} from "../bll/types";
+import Link from "next/link";
 
 
 type RecipeCardPropsType = {
@@ -7,16 +8,17 @@ type RecipeCardPropsType = {
 }
 
 const RecipeCard: React.FC<RecipeCardPropsType> = ({recipe}) => {
-    const {title, cookingTime, ripeningTime, initialData} = recipe
-    const {milkType, milkPH, protein, fat} = initialData
+    const {title, cookingTime, initialData, id} = recipe
+    const {milkType} = initialData
     const milkTypeForRender = milkType.join(', ')
 
+
     return (
-        <div className={s.container}>
+        <Link href={`/library/cheeses/${id}`} className={s.container}>
             <div className={s.title}>{title}</div>
             <div>Время приготовления: {cookingTime} дня</div>
             <div>Требуемый тип молока: {milkTypeForRender}</div>
-        </div>
+        </Link>
     );
 };
 

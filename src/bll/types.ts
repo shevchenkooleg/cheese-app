@@ -15,6 +15,7 @@ export type MainInformationInitialDataType = {
 }
 
 export type MainInformationType = {
+    id: number
     title: string
     cookingTime: number
     ripeningTime: number

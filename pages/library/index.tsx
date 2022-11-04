@@ -1,7 +1,6 @@
-import {useAppSelector} from "../src/utils/hooks";
-import RecipeCard from "../src/component/RecipeCard";
-import s from '../src/styles/Library.module.css'
-import Navbar from "../src/component/Navbar";
+import s from '../../src/styles/Library.module.css'
+import Navbar from "../../src/component/Navbar";
+import Link from "next/link";
 
 const navigation = [
     {id: 1, title: 'Home', path: '/'},
@@ -12,8 +11,6 @@ const navigation = [
 
 const Library = () => {
 
-    const recipes = useAppSelector(state => state.library.recipes)
-
     return (
         <div className={s.container}>
             <div className={s.content}>
@@ -21,9 +18,8 @@ const Library = () => {
                     Библиотека сыровара
                 </div>
                 <div className={s.main}>
-                    {recipes.map(el =>
-                        <RecipeCard recipe={el.mainInformation}/>
-                    )}
+                    <Link href={'/library/cheeses'} className={s.listElement}>Сыры</Link>
+                    <Link href={'/library/leaven'} className={s.listElement}>Закваски</Link>
                 </div>
                 <Navbar navigation={navigation}/>
             </div>

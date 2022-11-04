@@ -8,6 +8,7 @@ type initialStateType = {
 const initialState: initialStateType = {
     recipes: [{
         mainInformation: {
+            id: 1,
             title: 'Качотта',
             cookingTime: 4,
             ripeningTime: 30,
@@ -61,6 +62,7 @@ const initialState: initialStateType = {
         }
     }, {
         mainInformation: {
+            id: 2,
             title: 'Моцарелла',
             cookingTime: 3,
             ripeningTime: 40,
