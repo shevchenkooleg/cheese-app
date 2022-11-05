@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
+
 const Schema = mongoose.Schema
 
 const TestSchema = new Schema({
-    test: String
-})
+        title: String,
+        recipe: String
+    }
+)
 
 const Test = mongoose.models.Test || mongoose.model('Test', TestSchema)
 
