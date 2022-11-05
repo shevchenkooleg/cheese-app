@@ -14,6 +14,8 @@ import Layout from "../../../src/component/TechnicalData/Layout";
 import Coups from "../../../src/component/TechnicalData/Coups";
 import Salting from "../../../src/component/TechnicalData/Salting";
 import Drying from "../../../src/component/TechnicalData/Drying";
+import Aging from "../../../src/component/TechnicalData/Aging";
+import Storage from "../../../src/component/TechnicalData/Storage";
 
 
 const cheesesNavigation = [
@@ -45,6 +47,8 @@ const cheese = () => {
                     <Coups coups={recipe.coups}/>
                     <Salting salting={recipe.salting}/>
                     <Drying drying={recipe.drying}/>
+                    <Aging aging={recipe.aging}/>
+                    <Storage storage={recipe.storage}/>
                 </div>
                 <Navbar navigation={cheesesNavigation}/>
             </div>
