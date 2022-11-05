@@ -49,6 +49,16 @@ const initialState: initialStateType = {
             heatingTemperature: {min: 38.5, max: 39.5},
             heatingTime: {min: 10, max: 15}
         },
+        spices:{
+            type: ["розмарин", "лук-шалот", "итальянские травы", "перец", "сухой чеснок", "пажитник"],
+            weight: {
+                total: 0.2,
+                option: '% от веса будущего сыра',
+            },
+            additionally: ['Сухие травы обработать в микроволновке на 20 секунд',
+                'Пажитник - промыть и залить кипятком на 2-3 часа и добавить вместе с жидкостью в зерно',
+                'Пажитник обжарить на сухой раскаленной сковороде и добавить в зерно'],
+        },
         layout: {
             type: ['выкладка наливом с сывороткой через формы (ковш)','насыпью без сыворотки (сито)'],
             milkPH: {min: 6.4, max: 6.3},
@@ -58,7 +68,36 @@ const initialState: initialStateType = {
             restCount: 6,
             restTime: {min: 30, max: 40},
             totalTime: {min: 180, max: 300},
+            drainageType: 'самопрессование',
             milkPH: {min: 5.2, max: 5.3},
+            finallyTime: {min: 6, max: 8},
+            finalAction: 'Убрать в формах в холод',
+            finallyTemperature: {min: 8, max: 12}
+        },
+        salting:{
+            dry:{
+                totalWeight: {min: 20, max: 22},
+                saltingTime: 24
+            },
+            wet:{
+                concentration: 20,
+                brinePH: {min: 5.2, max: 5.3},
+                saltingTime: 24
+            },
+        },
+        drying:{
+            dryingTime: {min: 12, max: 24},
+            dryingTemperature: {min: 10, max: 12},
+            dryingHumidity: {min: 75, max: 80},
+        },
+        aging: {
+            agingTime: {min: 30, max: 60},
+            agingTemperature: {min: 10, max: 12},
+            agingHumidity: {min: 85, max: 90},
+            care: ['Переворот каждый день', 'При нарастании естественной плесени - чистить полумягкой сухой щеткой']
+        },
+        storage:{
+            storageTemperature: {min: 2, max: 5},
         }
     }, {
         mainInformation: {
@@ -103,6 +142,7 @@ const initialState: initialStateType = {
             heatingTemperature: {min: 38.5, max: 39.5},
             heatingTime: {min: 10, max: 15}
         },
+        spices:null,
         layout: {
             type: ['выкладка наливом с сывороткой через формы (ковш)','насыпью без сыворотки (сито)'],
             milkPH: {min: 6.4, max: 6.3},
@@ -112,7 +152,36 @@ const initialState: initialStateType = {
             restCount: 6,
             restTime: {min: 30, max: 40},
             totalTime: {min: 180, max: 300},
+            drainageType: 'искусственное прессование',
             milkPH: {min: 5.2, max: 5.3},
+            finallyTime: {min: 6, max: 8},
+            finalAction: 'Убрать в формах в холод',
+            finallyTemperature: {min: 8, max: 12}
+        },
+        salting:{
+            dry:{
+                totalWeight: {min: 20, max: 22},
+                saltingTime: 24,
+            },
+            wet:{
+                concentration: 20,
+                brinePH: {min: 5.2, max: 5.3},
+                saltingTime: 24,
+            },
+        },
+        drying:{
+            dryingTime: {min: 12, max: 24},
+            dryingTemperature: {min: 10, max: 12},
+            dryingHumidity: {min: 75, max: 80},
+        },
+        aging: {
+            agingTime: {min: 30, max: 60},
+            agingTemperature: {min: 10, max: 12},
+            agingHumidity: {min: 85, max: 90},
+            care: ['Переворот каждый день', 'При нарастании естественной плесени - чистить полумягкой сухой щеткой']
+        },
+        storage:{
+            storageTemperature: {min: 2, max: 5},
         }
     }]
 }

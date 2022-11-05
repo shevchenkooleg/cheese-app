@@ -6,6 +6,14 @@ import MainInformation from "../../../src/component/TechnicalData/MainInformatio
 import {useAppSelector} from "../../../src/utils/hooks";
 import Pasteurization from "../../../src/component/TechnicalData/Pasteurization";
 import Ripening from "../../../src/component/TechnicalData/Ripening";
+import Cutting from "../../../src/component/TechnicalData/Cutting";
+import Kneading from "../../../src/component/TechnicalData/Kneading";
+import SecondHeating from "../../../src/component/TechnicalData/SecondHeating";
+import Spices from "../../../src/component/TechnicalData/Spices";
+import Layout from "../../../src/component/TechnicalData/Layout";
+import Coups from "../../../src/component/TechnicalData/Coups";
+import Salting from "../../../src/component/TechnicalData/Salting";
+import Drying from "../../../src/component/TechnicalData/Drying";
 
 
 const cheesesNavigation = [
@@ -29,6 +37,14 @@ const cheese = () => {
                     <MainInformation mainInformation={recipe.mainInformation}/>
                     <Pasteurization pasteurization={recipe.pasteurization}/>
                     <Ripening ripening={recipe.ripening}/>
+                    <Cutting cutting={recipe.cutting}/>
+                    <Kneading kneading={recipe.kneading}/>
+                    {recipe.spices !== null && <Spices spices={recipe.spices}/>}
+                    <SecondHeating secondHeating={recipe.secondHeating}/>
+                    <Layout layout={recipe.layout}/>
+                    <Coups coups={recipe.coups}/>
+                    <Salting salting={recipe.salting}/>
+                    <Drying drying={recipe.drying}/>
                 </div>
                 <Navbar navigation={cheesesNavigation}/>
             </div>

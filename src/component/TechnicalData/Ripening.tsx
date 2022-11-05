@@ -48,7 +48,6 @@ const Ripening: React.FC<RipeningPropsType> = ({ripening}) => {
                 <div>Коэффициент флокуляции:</div>
                 <div>{enzyme.clotting.k}</div>
             </div>
-
         </div>
     );
 };
