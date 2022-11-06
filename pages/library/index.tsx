@@ -12,8 +12,8 @@ const navigation = [
 const Library = () => {
 
     return (
-        <div className={s.container}>
-            <div className={s.content}>
+        <div className='container'>
+            <div className='content'>
                 <div className={s.title}>
                     Библиотека сыровара
                 </div>

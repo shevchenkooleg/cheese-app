@@ -30,27 +30,29 @@ const cheese = () => {
     const recipe = useAppSelector(state => state.library.recipes.filter(el => el.mainInformation.id === Number(query.id))[0])
 
     return (
-        <div className={s.container}>
-            {recipe && <div className={s.content}>
-                <div className={s.title}>
-                    {recipe.mainInformation.title}
+        <div className='container'>
+            {recipe && <div className='content'>
+                <div className='main'>
+                    <div className={s.title}>
+                        {recipe.mainInformation.title}
+                    </div>
+                    <div className={s.recipe}>
+                        <MainInformation mainInformation={recipe.mainInformation}/>
+                        <Pasteurization pasteurization={recipe.pasteurization}/>
+                        <Ripening ripening={recipe.ripening}/>
+                        <Cutting cutting={recipe.cutting}/>
+                        <Kneading kneading={recipe.kneading}/>
+                        {recipe.spices !== null && <Spices spices={recipe.spices}/>}
+                        <SecondHeating secondHeating={recipe.secondHeating}/>
+                        <Layout layout={recipe.layout}/>
+                        <Coups coups={recipe.coups}/>
+                        <Salting salting={recipe.salting}/>
+                        <Drying drying={recipe.drying}/>
+                        <Aging aging={recipe.aging}/>
+                        <Storage storage={recipe.storage}/>
+                    </div>
+                    <Navbar navigation={cheesesNavigation}/>
                 </div>
-                <div className={s.main}>
-                    <MainInformation mainInformation={recipe.mainInformation}/>
-                    <Pasteurization pasteurization={recipe.pasteurization}/>
-                    <Ripening ripening={recipe.ripening}/>
-                    <Cutting cutting={recipe.cutting}/>
-                    <Kneading kneading={recipe.kneading}/>
-                    {recipe.spices !== null && <Spices spices={recipe.spices}/>}
-                    <SecondHeating secondHeating={recipe.secondHeating}/>
-                    <Layout layout={recipe.layout}/>
-                    <Coups coups={recipe.coups}/>
-                    <Salting salting={recipe.salting}/>
-                    <Drying drying={recipe.drying}/>
-                    <Aging aging={recipe.aging}/>
-                    <Storage storage={recipe.storage}/>
-                </div>
-                <Navbar navigation={cheesesNavigation}/>
             </div>
             }
         </div>

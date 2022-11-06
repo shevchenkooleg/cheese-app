@@ -1,12 +1,3 @@
-.container {
-  background-image: url("../assets/images/main_bg.jpg");
-  background-blend-mode: color-dodge;
-  background-repeat: no-repeat;
-  background-size: 360%;
-  background-position: center;
-  background-color: rgba(0,0,0,0.4);
-  min-height: 100vh
-}
 
 .main {
   min-height: 90vh;

@@ -1,19 +1,5 @@
-.container {
-    background-image: url("../assets/images/main_bg.jpg");
-    background-attachment: fixed;
-    background-blend-mode: color-dodge;
-    background-repeat: no-repeat;
-    background-size: 360%;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.4);
-    min-height: 100vh;
-}
-.content {
-    /*height: 100vh;*/
-    backdrop-filter: blur(7px)
-}
 
-.main {
+.recipe {
     min-height: 80vh;
     width: 100%;
     padding: 0 1rem;
@@ -22,7 +8,6 @@
     justify-content: flex-start;
     align-items: center;
 }
-
 .title {
     font-size: 26px;
     padding-top: 50px;

@@ -1,20 +1,5 @@
-.container {
-    background-image: url("../assets/images/main_bg.jpg");
-    background-attachment: fixed;
-    background-blend-mode: color-dodge;
-    background-repeat: no-repeat;
-    background-size: 360%;
-    background-position: center;
-    background-color: rgba(0, 0, 0, 0.4);
-    min-height: 100vh;
-}
-.content {
-    /*height: 100vh;*/
-    backdrop-filter: blur(7px)
-}
 
-.main {
-    min-height: 80vh;
+.table {
     padding: 1rem 0;
     flex: 1;
     display: flex;
@@ -22,7 +7,6 @@
     justify-content: flex-start;
     align-items: center;
 }
-
 .title {
     font-size: 26px;
     padding-top: 50px;
@@ -34,4 +18,11 @@
     font-size: 20px;
     margin: 0 0 20px 0;
     height: 50px;
+}
+.linkTitle{
+    font-size: 16px;
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    height: 8vh;
 }

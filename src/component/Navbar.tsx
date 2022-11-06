@@ -7,6 +7,9 @@ type NavbarPropsType = {
 }
 
 const Navbar: React.FC<NavbarPropsType> = ({navigation}) => {
+
+    console.log(navigation)
+
     return (
         <div className={s.container}>
             {
