@@ -19,7 +19,6 @@ export type MainInformationType = {
     id: number
     title: string
     cookingTime: number
-    ripeningTime: number
     initialData: MainInformationInitialDataType
 }
 
@@ -32,7 +31,6 @@ export type PasteurizationType = {
 
 export type LeavenType = {
     title: string
-    value: DataRangeType
     time: DataRangeType
 }
 
@@ -44,7 +42,6 @@ export type ClottingType = {
 
 export type EnzymeType = {
     title: string
-    value: DataRangeType
     clotting: ClottingType
 }
 
@@ -145,6 +142,9 @@ export type NavigationType = {
     title: string
     path: string
 }
+
+export type PostfixType = 'sec' | 'min' | 'hour' | 'deg' | 'unit'
+
 
 
 // export type RecipeDBType = {

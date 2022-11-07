@@ -17,10 +17,6 @@ const Ripening: React.FC<RipeningPropsType> = ({ripening}) => {
                 <div>Культуры:</div>
                 <div>{leaven.title}</div>
             </div>
-            <div className={s.tableElement}>
-                <div>Дозировка:</div>
-                <div>{leaven.value.min} - {leaven.value.max} литров</div>
-            </div>
             <div className={s.altTableElement}>
                 <div>Время созревания</div>
             </div>
@@ -33,16 +29,12 @@ const Ripening: React.FC<RipeningPropsType> = ({ripening}) => {
                 <div className={s.enzyme}>{enzyme.title}</div>
             </div>
             <div className={s.tableElement}>
-                <div>Дозировка:</div>
-                <div>{enzyme.value.min} - {enzyme.value.max} литров</div>
-            </div>
-            <div className={s.tableElement}>
                 <div>Время свертывания:</div>
                 <div>{enzyme.clotting.time} минут</div>
             </div>
             <div className={s.tableElement}>
                 <div>Температура свертывания:</div>
-                <div>{enzyme.clotting.temperature} &deg;C</div>
+                <div>{enzyme.clotting.temperature} &deg;С</div>
             </div>
             <div className={s.tableElement}>
                 <div>Коэффициент флокуляции:</div>

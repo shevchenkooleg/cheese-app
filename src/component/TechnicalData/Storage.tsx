@@ -15,7 +15,7 @@ const Storage:React.FC<StoragePropsType> = ({storage}) => {
             <div className={s.title}>Хранение</div>
             <div className={s.tableElement}>
                 <div>Температура хранения:</div>
-                <div>{storageTemperature.min} - {storageTemperature.max} &deg;C</div>
+                <div>{storageTemperature.min} - {storageTemperature.max} &deg;С</div>
             </div>
         </div>
     );

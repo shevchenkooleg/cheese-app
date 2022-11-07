@@ -3,7 +3,7 @@ import s from "../../../src/styles/Cheeses.module.css";
 import RecipeCard from "../../../src/component/RecipeCard";
 import Navbar from "../../../src/component/Navbar";
 import Link from "next/link";
-import {PATH} from "../../index";
+import { PATH } from "../../../src/utils/appPath";
 
 
 const cheesesNavigation = [
@@ -26,7 +26,7 @@ const Cheeses = () => {
                     </div>
                     <div className={s.linkTitle}>
                         <button>
-                            <Link href={'/library/cheeses/Constructor'}>
+                            <Link href={PATH.LIBRARY.CHEESES.CONSTRUCTOR.MAIN}>
                                 Добавить технологическую карту
                             </Link>
                         </button>

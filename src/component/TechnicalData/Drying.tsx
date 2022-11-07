@@ -18,7 +18,7 @@ const Drying:React.FC<DryingPropsType> = ({drying}) => {
             </div>
             <div className={s.tableElement}>
                 <div>Температура:</div>
-                <div>{dryingTemperature.min} - {dryingTemperature.max} &deg;C</div>
+                <div>{dryingTemperature.min} - {dryingTemperature.max} &deg;С</div>
             </div>
             <div className={s.tableElement}>
                 <div>Влажность:</div>

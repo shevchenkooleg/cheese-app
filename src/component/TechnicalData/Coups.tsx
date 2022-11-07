@@ -43,7 +43,7 @@ const Coups:React.FC<CoupsPropsType> = ({coups}) => {
             </div>
             <div className={s.tableElement}>
                 <div>Остановка набора кислотности:</div>
-                <div className='text-right'>{finalAction} {finallyTemperature.min} - {finallyTemperature.max} &deg;C</div>
+                <div className='text-right'>{finalAction} {finallyTemperature.min} - {finallyTemperature.max} &deg;С</div>
             </div>
         </div>
     );

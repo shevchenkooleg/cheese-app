@@ -11,7 +11,6 @@ const initialState: initialStateType = {
             id: 1,
             title: 'Качотта',
             cookingTime: 4,
-            ripeningTime: 30,
             initialData: {
                 milkType: ['Коровье', 'Козье', 'Смесь'],
                 milkPH: {min: 6.6, max: 6.7},
@@ -28,12 +27,10 @@ const initialState: initialStateType = {
         ripening: {
             leaven: {
                 title: 'Biochem SLB 10U',
-                value: {min: 1000, max: 1500},
                 time: {min: 30, max: 40},
             },
             enzyme: {
                 title: 'Hansen NATUREN Premium Plus 1400NB',
-                value: {min: 100, max: 200},
                 clotting: {time: 40, temperature: 36, k: 1.5},
             },
         },
@@ -104,7 +101,6 @@ const initialState: initialStateType = {
             id: 2,
             title: 'Моцарелла',
             cookingTime: 3,
-            ripeningTime: 40,
             initialData: {
                 milkType: ['Коровье'],
                 milkPH: {min: 6.6, max: 6.7},
@@ -121,12 +117,10 @@ const initialState: initialStateType = {
         ripening: {
             leaven: {
                 title: 'Biochem SLB 10U',
-                value: {min: 1000, max: 1500},
                 time: {min: 30, max: 40},
             },
             enzyme: {
                 title: 'Hansen NATUREN Premium Plus 1400NB',
-                value: {min: 100, max: 200},
                 clotting: {time: 40, temperature: 36, k: 1.5},
             },
         },

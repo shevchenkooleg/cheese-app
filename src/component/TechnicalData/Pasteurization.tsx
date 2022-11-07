@@ -14,11 +14,11 @@ const Pasteurization: React.FC<PasteurizationPropsType> = ({pasteurization}) => 
             <div className={s.title}>Термическая обработка</div>
             <div className={s.tableElement}>
                 <div>Пастеризация:</div>
-                <div>{pasteurizationTemperature} &deg;C / {pasteurizationTime} сек</div>
+                <div>{pasteurizationTemperature} &deg;С / {pasteurizationTime} сек</div>
             </div>
             <div className={s.tableElement}>
                 <div>Охлаждение:</div>
-                <div>{coolingTemperature.min} - {coolingTemperature.max} &deg;C</div>
+                <div>{coolingTemperature.min} - {coolingTemperature.max} &deg;С</div>
             </div>
             <div className={s.altTableElement}>
                 <div>pH пастеризованного</div>

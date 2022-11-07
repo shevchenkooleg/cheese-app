@@ -15,7 +15,7 @@ const SecondHeating: React.FC<SecondHeatingPropsType> = ({secondHeating}) => {
             <div className={s.title}>Второе нагревание</div>
             <div className={s.tableElement}>
                 <div>Температура:</div>
-                <div>{heatingTemperature.min} - {heatingTemperature.max} &deg;C</div>
+                <div>{heatingTemperature.min} - {heatingTemperature.max} &deg;С</div>
             </div>
             <div className={s.tableElement}>
                 <div>Время нагревания:</div>

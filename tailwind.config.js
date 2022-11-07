@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
-    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/**/**/*.{js,ts,jsx,tsx}",
     "./src/component/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
@@ -11,5 +11,7 @@ module.exports = {
       'sans': ['Montserrat', 'sans-serif']
     },
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 }

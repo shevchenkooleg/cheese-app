@@ -20,7 +20,7 @@ const Aging:React.FC<AgingPropsType> = ({aging}) => {
             </div>
             <div className={s.tableElement}>
                 <div>Температура:</div>
-                <div>{agingTemperature.min} - {agingTemperature.max} &deg;C</div>
+                <div>{agingTemperature.min} - {agingTemperature.max} &deg;С</div>
             </div>
             <div className={s.tableElement}>
                 <div>Влажность:</div>

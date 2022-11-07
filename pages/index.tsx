@@ -3,28 +3,7 @@ import s from '../src/styles/Home.module.css'
 import Navbar from "../src/component/Navbar";
 import {useAppDispatch} from "../src/utils/hooks";
 import {createTestNote, getTestNotes} from '../src/bll/slices/tetsSlice';
-
-export const PATH = {
-    HOME: {
-        MAIN: '/',
-    },
-    LIBRARY: {
-        MAIN: '/library',
-        CHEESES: {
-            MAIN: '/library/cheeses',
-            CONSTRUCTOR: {
-                MAIN: '/library/cheeses/Constructor'
-            }
-        },
-        LEAVEN: '/library/leaven'
-    },
-    ASSISTANT: {
-        MAIN: '/assistant'
-    },
-    SETTINGS: {
-        MAIN: '/settings'
-    }
-}
+import { PATH } from '../src/utils/appPath';
 
 const indexNavigation = [
     {id: 1, title: 'Library', path: PATH.LIBRARY.MAIN},
@@ -39,7 +18,6 @@ const data = {
             id: 1,
             title: 'Качотта',
             cookingTime: 4,
-            ripeningTime: 30,
             initialData: {
                 milkType: ['Коровье', 'Козье', 'Смесь'],
                 milkPH: {min: 6.6, max: 6.7},
@@ -56,12 +34,10 @@ const data = {
         ripening: {
             leaven: {
                 title: 'Biochem SLB 10U',
-                value: {min: 1000, max: 1500},
                 time: {min: 30, max: 40},
             },
             enzyme: {
                 title: 'Hansen NATUREN Premium Plus 1400NB',
-                value: {min: 100, max: 200},
                 clotting: {time: 40, temperature: 36, k: 1.5},
             },
         },
@@ -155,7 +131,7 @@ export default function Home() {
             </Head>
 
             <main className={s.main}>
-                <h1 className={'text-3xl'}>
+                <h1 className={'text-3xl text-white'}>
                     Cheese Application
                 </h1>
                 <button onClick={onPostButtonClickHandler} className='my-5'>Post test</button>

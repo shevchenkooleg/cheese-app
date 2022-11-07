@@ -1,9 +1,9 @@
+import React from 'react';
 import s from "../../../../src/styles/Constructor.module.css";
-import {ReactNode} from "react";
-import MainInformationForm from "../../../../src/component/Constructor/MainInformationForm";
+import RipeningForm from "../../../../src/component/Constructor/RipeningForm";
 
+const Ripening = () => {
 
-const Constructor = () => {
 
 
     return (
@@ -11,10 +11,10 @@ const Constructor = () => {
             <div className='content'>
                 <div className='main'>
                     <div className={s.title}>
-                        Общая информация
+                        Культуры
                     </div>
                     <div className='min-h-screen'>
-                        <MainInformationForm/>
+                        <RipeningForm/>
                     </div>
                 </div>
             </div>
@@ -22,4 +22,4 @@ const Constructor = () => {
     );
 };
 
-export default Constructor;
+export default Ripening;

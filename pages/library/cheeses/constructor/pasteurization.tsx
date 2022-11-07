@@ -1,9 +1,9 @@
 import s from "../../../../src/styles/Constructor.module.css";
-import {ReactNode} from "react";
 import MainInformationForm from "../../../../src/component/Constructor/MainInformationForm";
+import PasteurizationForm from "../../../../src/component/Constructor/PasteurizationForm";
 
 
-const Constructor = () => {
+const Pasteurization = () => {
 
 
     return (
@@ -11,10 +11,10 @@ const Constructor = () => {
             <div className='content'>
                 <div className='main'>
                     <div className={s.title}>
-                        Общая информация
+                        Термическая обработка
                     </div>
                     <div className='min-h-screen'>
-                        <MainInformationForm/>
+                        <PasteurizationForm/>
                     </div>
                 </div>
             </div>
@@ -22,4 +22,4 @@ const Constructor = () => {
     );
 };
 
-export default Constructor;
+export default Pasteurization;
