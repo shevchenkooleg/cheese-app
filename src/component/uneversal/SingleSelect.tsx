@@ -1,19 +1,23 @@
 import {Select, SelectProps} from 'antd';
 import React from 'react';
 import s from "../../styles/Constructor.module.css";
+import {callback} from "next-auth/core/routes";
 
-const onChange = (value: string) => {
-    console.log(`selected ${value}`);
-};
+
 
 type SingleSelectPropsType = {
-    values: string[]
     title: string
+    values: string[]
     placeholder: string
+    callback?: (value:string)=>void
 }
 
 
-const SingleSelect: React.FC<SingleSelectPropsType> = ({title, values,placeholder}) => {
+const SingleSelect: React.FC<SingleSelectPropsType> = ({title, values,placeholder, callback}) => {
+
+    const onChange = (value:string) => {
+        callback && callback(value);
+    };
 
     const options: SelectProps['options'] = [];
     values.map(el => {

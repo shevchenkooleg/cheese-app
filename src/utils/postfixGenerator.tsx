@@ -44,5 +44,14 @@ export const postfixGenerator = (value: number, postfixType: PostfixType) => {
                 return 'секунд'
             }
         }
-    }
+    } else if (postfixType === 'min'){
+        if (value === 1){return 'минута'}
+        if (value > 1 && value < 5){return 'минуты'}
+        if (value > 4 && value < 20){return 'минут'}
+        if (value % 10 === 1){return 'минута'}
+        if (value % 10 > 1 && value % 10 < 5){return 'минуты'} else
+        {
+            return 'минут'
+        }
+    } else if (postfixType === '%'){return '%'}
 }

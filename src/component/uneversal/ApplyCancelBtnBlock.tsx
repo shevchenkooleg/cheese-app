@@ -11,7 +11,7 @@ const ApplyCancelBtnBlock: React.FC<ApplyCancelBtnBlockPropsType> = ({btnData}) 
     return (
 
         <div className='w-[100%] flex justify-evenly'>
-            {btnData.map(btn=><Link href={btn.linkPath}><Button ghost onClick={btn.callback}>{btn.title}</Button></Link>)}
+            {btnData.map((btn,key)=><Link href={btn.linkPath} key={key}><Button ghost onClick={btn.callback}>{btn.title}</Button></Link>)}
         </div>
     );
 };

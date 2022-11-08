@@ -1,8 +1,8 @@
-import s from "../../../../src/styles/Constructor.module.css";
-import PasteurizationForm from "../../../../src/component/Constructor/PasteurizationForm";
+import s from '../../../../src/styles/Constructor.module.css';
+import React from "react";
+import SpicesForm from "../../../../src/component/Constructor/SpicesForm";
 
-
-const Pasteurization = () => {
+const Cutting = () => {
 
 
     return (
@@ -10,10 +10,10 @@ const Pasteurization = () => {
             <div className='content'>
                 <div className='main'>
                     <div className={s.title}>
-                        Термическая обработка
+                        Специи
                     </div>
                     <div className='min-h-screen'>
-                        <PasteurizationForm/>
+                        <SpicesForm/>
                     </div>
                 </div>
             </div>
@@ -21,4 +21,4 @@ const Pasteurization = () => {
     );
 };
 
-export default Pasteurization;
+export default Cutting;

@@ -11,7 +11,13 @@ export const PATH = {
                 MAIN: '/library/cheeses/constructor',
                 PASTEURIZATION: '/library/cheeses/constructor/pasteurization',
                 RIPENING: '/library/cheeses/constructor/ripening',
-                CUTTING: '/library/cheeses/constructor/cutting'
+                CUTTING: '/library/cheeses/constructor/cutting',
+                SPICES: '/library/cheeses/constructor/spices',
+                LAYOUT: '/library/cheeses/constructor/layout',
+                COUPS: '/library/cheeses/constructor/coups',
+                SALTING: '/library/cheeses/constructor/salting',
+                DRYING: '/library/cheeses/constructor/drying',
+                AGING: '/library/cheeses/constructor/aging',
             }
         },
         LEAVEN: '/library/leaven'

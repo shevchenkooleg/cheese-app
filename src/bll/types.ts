@@ -143,7 +143,7 @@ export type NavigationType = {
     path: string
 }
 
-export type PostfixType = 'sec' | 'min' | 'hour' | 'deg' | 'unit'
+export type PostfixType = 'sec' | 'min' | 'hour' | 'deg' | 'unit' | '%'
 
 
 

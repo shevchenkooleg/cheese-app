@@ -1,83 +1,55 @@
-import { useFormik } from 'formik';
-import s from '../../styles/Constructor.module.css'
-import IntegerStep from '../uneversal/IntegerStep';
-import DoubleSlider from "../uneversal/DoubleSlider";
-import MultipleSelect from "../uneversal/MultipleSelect";
-import UInput from "../uneversal/UInput";
+import React, {useState} from 'react';
+import {useFormik} from "formik";
+import s from "../../styles/Constructor.module.css";
 import ApplyCancelBtnBlock from "../uneversal/ApplyCancelBtnBlock";
-import { PATH } from '../../utils/appPath';
-import {useEffect, useState} from "react";
+import {PATH} from "../../utils/appPath";
+import SingleSelect from "../uneversal/SingleSelect";
+import IntegerStep from "../uneversal/IntegerStep";
+import DoubleSlider from "../uneversal/DoubleSlider";
 
-const MainInformationForm = () => {
+const SaltingForm = () => {
+
+    const [saltingType, setSaltingType] = useState('')
 
     const formik = useFormik({
         initialValues: {
-            title: '',
-            cookingTime: null,
-            milkType: null,
+            pasteurizationTemperature: null,
+            pasteurizationTime: null,
+            coolingTemperature: null,
             milkPH: null,
-            protein: null,
-            fat: null,
         },
         // validationSchema: LoginValidationSchema,
         onSubmit: (values, actions) => {
-            const title = values.title
-            const cookingTime = values.cookingTime
-            const milkType = values.milkType
+            const pasteurizationTemperature = values.pasteurizationTemperature
+            const pasteurizationTime = values.pasteurizationTime
+            const coolingTemperature = values.coolingTemperature
             const milkPH = values.milkPH
-            const protein = values.protein
-            const fat = values.fat
-            console.log(title)
+
             // dispatch(logInTC({email, password, rememberMe}))
             // if (isAuth) {
             //     navigate('/')
             // }
-            actions.resetForm({values: {title: '',
-                    cookingTime: null,
-                    milkType: null,
+            actions.resetForm({
+                values: {
+                    pasteurizationTemperature: null,
+                    pasteurizationTime: null,
+                    coolingTemperature: null,
                     milkPH: null,
-                    protein: null,
-                    fat: null,}})
+                }
+            })
         }
     })
-
-    const [titleValue, setTitleValue] = useState('')
-    const [cookingTime, setCookingTime] = useState(4)
-    const [milkType, setMilkType] = useState('')
-    const [milkPH, setMilkPH] = useState(0)
-    const [protein, setProtein] = useState(0)
-    const [fat, setFat] = useState(0)
-
-    useEffect(()=>{
-        console.log(cookingTime)
-    }, [cookingTime])
 
 
 
     return (
-
         <div>
             <form onSubmit={formik.handleSubmit}>
                 <div className={s.main}>
-                    <UInput
-                        title={'Наименование'}
-                        placeholderValue={'Название сыра'}
-                        callback={setTitleValue}
-                        titleValue={titleValue}
-                    />
-                    <IntegerStep
-                        title={'Время приготовления'}
-                        minRange={1} maxRange={10}
-                        postfix={"hour"}
-                        value={cookingTime}
-                        callback={setCookingTime}
-                    />
-                    //todo doing from this step
-                    <MultipleSelect title={'Тип молока'} values={['Коровье','Козье','Ежовое','Смешанное']} placeholder={'Выберите тип молока'}/>
-                    <DoubleSlider title={'pH холодного молока'} minRange={6} maxRange={7} step={0.1} defaultValues={[6.6,6.7]}/>
-                    <DoubleSlider title={'Содержание белка'} minRange={3} maxRange={4} step={0.1} defaultValues={[3.2,3.4]}/>
-                    <DoubleSlider title={'Жирность'} minRange={3} maxRange={5} step={0.1} defaultValues={[3.6,4.0]}/>
-
+                    <SingleSelect title={'Тип посолки'} values={['Рассол','По-сухому']} placeholder={'выберите тип посолки'} callback={setSaltingType}/>
+                    {saltingType === 'Рассол' && <IntegerStep title={'Концентрация раствора, %'} minRange={1} maxRange={50} defaultValue={20} postfix={'%'}/>}
+                    {saltingType === 'Рассол' && <DoubleSlider title={'ph раствора'} minRange={5} maxRange={6} step={0.1} defaultValues={[5.2,5.3]}/>}
+                    {saltingType === 'По-сухому' && <DoubleSlider title={'Количество соли на 1 кг веса сыра, г'} minRange={1} maxRange={50} step={1} defaultValues={[20,22]}/>}
 
                     {/*<TextField*/}
                     {/*    {...formik.getFieldProps('email')}*/}
@@ -130,8 +102,8 @@ const MainInformationForm = () => {
                 </div>
                 <div className={s.btnBlock}>
                     <ApplyCancelBtnBlock btnData={[
-                        {title:'Назад', linkPath: PATH.LIBRARY.CHEESES.MAIN, callback:()=>{}},
-                        {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.PASTEURIZATION, callback:()=>{formik.submitForm()}}]}/>
+                        {title:'Назад', linkPath: PATH.LIBRARY.CHEESES.CONSTRUCTOR.COUPS, callback:()=>{}},
+                        {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.DRYING, callback:()=>{}}]}/>
                 </div>
 
             </form>
@@ -139,4 +111,4 @@ const MainInformationForm = () => {
     );
 };
 
-export default MainInformationForm;
+export default SaltingForm;

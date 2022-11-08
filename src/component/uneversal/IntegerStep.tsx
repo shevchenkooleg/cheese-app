@@ -1,24 +1,30 @@
 import { Col, InputNumber, Row, Slider } from 'antd';
-import React, { useState } from 'react';
+import React, {ChangeEvent, useState} from 'react';
 import { postfixGenerator } from '../../utils/postfixGenerator';
 import s from '../../styles/Constructor.module.css'
 import {PostfixType} from "../../bll/types";
+import {ValueType} from "tailwindcss/types/config";
+import {isNumberObject} from "util/types";
 
 type IntegerStepPropsType = {
     title: string
     minRange: number
     maxRange: number
-    defaultValue: number
     step?: number
     postfix?: PostfixType
+    value: number
+    callback: (newValue: number)=>void
 }
 
-const IntegerStep: React.FC<IntegerStepPropsType> = ({title, minRange, maxRange, step=1, defaultValue, postfix='unit'}) => {
-    const [inputValue, setInputValue] = useState(defaultValue);
+const IntegerStep: React.FC<IntegerStepPropsType> = ({title, minRange, maxRange, step=1, postfix='unit', value=1, callback}) => {
 
-    const onChange = (newValue: number) => {
-        setInputValue(newValue);
+    const onSliderChange = (newValue: number) => {
+        callback(newValue);
     };
+    const onInputChange = (value: Number | null) => {
+        console.log(value)
+        value && callback(Number(value))
+    }
 
     return (
         <div className={s.tabElement}>
@@ -30,8 +36,8 @@ const IntegerStep: React.FC<IntegerStepPropsType> = ({title, minRange, maxRange,
                     <Slider
                         min={minRange}
                         max={maxRange}
-                        onChange={onChange}
-                        value={typeof inputValue === 'number' ? inputValue : 0}
+                        onChange={onSliderChange}
+                        value={value}
                         step={step}
                     />
                 </Col>
@@ -40,10 +46,11 @@ const IntegerStep: React.FC<IntegerStepPropsType> = ({title, minRange, maxRange,
                         min={minRange}
                         max={maxRange}
                         // style={{ margin: '0 15px' }}
-                        value={inputValue}
-                        addonAfter={postfixGenerator(inputValue, postfix)}
+                        value={value}
+                        addonAfter={postfixGenerator(value, postfix)}
                         className='ml-[8px]'
-                        // onChange={onChange}
+                        onChange={onInputChange}
+
                     />
                 </Col>
             </Row>

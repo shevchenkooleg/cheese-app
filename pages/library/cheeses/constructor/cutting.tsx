@@ -1,5 +1,4 @@
 import s from '../../../../src/styles/Constructor.module.css';
-import RipeningForm from "../../../../src/component/Constructor/RipeningForm";
 import React from "react";
 import CuttingForm from "../../../../src/component/Constructor/CuttingForm";
 

@@ -1,19 +1,17 @@
+import React from 'react';
 import s from "../../../../src/styles/Constructor.module.css";
-import PasteurizationForm from "../../../../src/component/Constructor/PasteurizationForm";
+import DryingForm from "../../../../src/component/Constructor/DryingForm";
 
-
-const Pasteurization = () => {
-
-
+const Drying = () => {
     return (
         <div className='container'>
             <div className='content'>
                 <div className='main'>
                     <div className={s.title}>
-                        Термическая обработка
+                        Обсушка
                     </div>
                     <div className='min-h-screen'>
-                        <PasteurizationForm/>
+                        <DryingForm/>
                     </div>
                 </div>
             </div>
@@ -21,4 +19,4 @@ const Pasteurization = () => {
     );
 };
 
-export default Pasteurization;
+export default Drying;

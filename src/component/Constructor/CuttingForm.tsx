@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {CSSProperties, useState} from 'react';
 import {useFormik} from "formik";
 import s from "../../styles/Constructor.module.css";
 import IntegerStep from "../uneversal/IntegerStep";
@@ -47,10 +47,10 @@ const CuttingForm = () => {
             <form onSubmit={formik.handleSubmit}>
                 <div className={s.main}>
                     <SingleSelect title={'Разрезка сгустка'} values={['Горох','Фундук','Кокос']} placeholder={'Выберите размер разрезки сгустка'}/>
-                    <IntegerStep title={'Время вымешивания'} minRange={10} maxRange={30} defaultValue={15} postfix={'min'}/>
-                    <MyCheckBox title={'Второе нагревание'} callback={setDoubleHeating} isChecked={doubleHeating}/>
-                    {!doubleHeating && <DoubleSlider title={'Температура второго нагревания'} minRange={35} maxRange={45} step={0.1} defaultValues={[38.5,39.5]}/>}
-                    {!doubleHeating && <DoubleSlider title={'Время второго нагревания'} minRange={5} maxRange={30} step={1} defaultValues={[10,15]}/>}
+                    <IntegerStep title={'Время вымешивания'} minRange={0} maxRange={40} defaultValue={15} postfix={'min'}/>
+                    <MyCheckBox title={'Второе нагревание'} callback={setDoubleHeating} isChecked={doubleHeating} style={{'fontSize': '16px','marginTop': '20px'} as CSSProperties}/>
+                    {doubleHeating && <DoubleSlider title={'Температура второго нагревания'} minRange={35} maxRange={45} step={0.1} defaultValues={[38.5,39.5]}/>}
+                    {doubleHeating && <DoubleSlider title={'Время второго нагревания'} minRange={5} maxRange={30} step={1} defaultValues={[10,15]}/>}
 
 
 
@@ -109,7 +109,7 @@ const CuttingForm = () => {
                 <div className={s.btnBlock}>
                     <ApplyCancelBtnBlock btnData={[
                         {title:'Назад', linkPath: PATH.LIBRARY.CHEESES.CONSTRUCTOR.RIPENING, callback:()=>{}},
-                        {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.CUTTING, callback:()=>{}}]}/>
+                        {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.SPICES, callback:()=>{}}]}/>
                 </div>
             </form>
         </div>

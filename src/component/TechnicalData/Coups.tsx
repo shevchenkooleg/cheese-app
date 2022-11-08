@@ -34,7 +34,7 @@ const Coups:React.FC<CoupsPropsType> = ({coups}) => {
                 <div className='text-right'>{drainageType}</div>
             </div>
             <div className={s.tableElement}>
-                <div>pH зерна после выкладки:</div>
+                <div>pH зерна после дренажирования:</div>
                 <div>{milkPH.min} - {milkPH.max}</div>
             </div>
             <div className={s.tableElement}>

@@ -1,19 +1,17 @@
+import React from 'react';
 import s from "../../../../src/styles/Constructor.module.css";
-import PasteurizationForm from "../../../../src/component/Constructor/PasteurizationForm";
+import AgingForm from "../../../../src/component/Constructor/AgingForm";
 
-
-const Pasteurization = () => {
-
-
+const Aging = () => {
     return (
         <div className='container'>
             <div className='content'>
                 <div className='main'>
                     <div className={s.title}>
-                        Термическая обработка
+                        Созревание
                     </div>
                     <div className='min-h-screen'>
-                        <PasteurizationForm/>
+                        <AgingForm/>
                     </div>
                 </div>
             </div>
@@ -21,4 +19,4 @@ const Pasteurization = () => {
     );
 };
 
-export default Pasteurization;
+export default Aging;
