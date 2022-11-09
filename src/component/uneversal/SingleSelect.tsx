@@ -1,26 +1,26 @@
 import {Select, SelectProps} from 'antd';
 import React from 'react';
 import s from "../../styles/Constructor.module.css";
-import {callback} from "next-auth/core/routes";
 
 
 
 type SingleSelectPropsType = {
     title: string
-    values: string[]
+    value: string
+    valuePool: string[]
     placeholder: string
-    callback?: (value:string)=>void
+    callback: (value:string)=>void
 }
 
 
-const SingleSelect: React.FC<SingleSelectPropsType> = ({title, values,placeholder, callback}) => {
+const SingleSelect: React.FC<SingleSelectPropsType> = ({title, value, valuePool, placeholder, callback}) => {
 
     const onChange = (value:string) => {
         callback && callback(value);
     };
 
     const options: SelectProps['options'] = [];
-    values.map(el => {
+    valuePool.map(el => {
         options.push({
             label: el,
             value: el,
@@ -37,6 +37,7 @@ const SingleSelect: React.FC<SingleSelectPropsType> = ({title, values,placeholde
                 onChange={onChange}
                 options={options}
                 className='w-[100%]'
+                value={value}
             />
         </div>
 

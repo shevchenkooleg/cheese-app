@@ -5,14 +5,16 @@ import s from '../../styles/Constructor.module.css'
 
 type MultipleSelectPropsType = {
     title: string
-    values: string[]
     placeholder: string
+    value: string[]
+    valuePool: string[]
+    callback: (newValue: string[])=>void
 }
 
-const MultipleSelect:React.FC<MultipleSelectPropsType> = ({title, values, placeholder}) => {
+const MultipleSelect:React.FC<MultipleSelectPropsType> = ({title, value, placeholder, valuePool,callback }) => {
 
     const options: SelectProps['options'] = [];
-    values.map(el=>{
+    valuePool.map(el=>{
         options.push({
             label: el,
             value: el,
@@ -20,7 +22,7 @@ const MultipleSelect:React.FC<MultipleSelectPropsType> = ({title, values, placeh
     })
 
     const handleChange = (value: string[]) => {
-        console.log(`selected ${value}`);
+        callback(value)
     };
 
 
@@ -34,9 +36,9 @@ const MultipleSelect:React.FC<MultipleSelectPropsType> = ({title, values, placeh
                 allowClear
                 style={{width: '100%'}}
                 placeholder={placeholder}
-                defaultValue={[]}
                 onChange={handleChange}
                 options={options}
+                value={value}
             />
         </div>
     );

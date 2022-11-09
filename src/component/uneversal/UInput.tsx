@@ -1,5 +1,4 @@
 import {Input} from 'antd';
-import { FieldInputProps } from 'formik';
 import s from '../../styles/Constructor.module.css'
 import {ChangeEvent} from "react";
 
@@ -7,10 +6,10 @@ type UInputPropsType = {
     title: string
     placeholderValue: string
     callback: (newTitle: string)=>void
-    titleValue: string
+    value: string
 }
 
-const UInput:React.FC<UInputPropsType> = ({title, placeholderValue, callback, titleValue}) => {
+const UInput:React.FC<UInputPropsType> = ({title, placeholderValue, callback, value}) => {
 
     const onChangeHandler = (e:ChangeEvent<HTMLInputElement>)=>{
         callback(e.currentTarget.value)
@@ -22,7 +21,7 @@ const UInput:React.FC<UInputPropsType> = ({title, placeholderValue, callback, ti
             <div className='flex justify-center my-[10px]'>
                 {title}
             </div>
-            <Input placeholder={placeholderValue} className='mb-[10px]' onChange={onChangeHandler} value={titleValue}/>
+            <Input placeholder={placeholderValue} className='mb-[10px]' onChange={onChangeHandler} value={value}/>
         </div>
 
     );

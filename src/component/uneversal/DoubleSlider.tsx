@@ -1,5 +1,5 @@
-import {Col, Input, InputNumber, Row, Slider} from 'antd';
-import React, { useState } from 'react';
+import {Col, Input, Row, Slider} from 'antd';
+import React, {ChangeEvent} from 'react';
 import s from '../../styles/Constructor.module.css'
 
 type DoubleSliderPropsType = {
@@ -7,17 +7,42 @@ type DoubleSliderPropsType = {
     minRange: number
     maxRange: number
     step: number
-    defaultValues: [number, number]
+    value: [number, number]
+    callback: (newValue: [number, number]) => void
 }
 
-const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRange, step, defaultValues}) => {
+const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRange, step, value, callback}) => {
 
-    const [value, setValue] = useState([Number(defaultValues[0]), Number(defaultValues[1])])
-
-    const onChangeHandler = (newValue: any) => {
-        console.log(newValue)
-        setValue(newValue)
+    const onChangeHandler = (newValue: [number, number]) => {
+        callback(newValue)
     }
+    const onMinValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        console.log(e.currentTarget.value)
+        callback([Number(e.currentTarget.value), Number(value[1])])
+    }
+    const onMaxValueChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        callback([Number(value[0]), Number(e.currentTarget.value)])
+    }
+    const onMinValueInputBlur = () => {
+        if (value[0]< minRange){
+            callback([Number(minRange), Number(value[1])])
+            console.log('Error min value, Value set to a minimum point')
+        } else if (value[0] > value[1]){
+            callback([Number(value[1]), Number(value[1])])
+            console.log('Error min value, Value set to a maximum point')
+        }
+    }
+    const onMaxValueInputBlur = () => {
+        if (value[1] > maxRange){
+            callback([Number(value[0]), Number(maxRange)])
+            console.log('Error max value, Value set to a maximum point')
+        } else if (value[1] < value[0]){
+            callback([Number(value[0]), Number(value[0])])
+            console.log('Error max value, Value set to a minimum point')
+        }
+    }
+
+
 
     return (
         <div className={s.tabElement}>
@@ -27,8 +52,8 @@ const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRang
             <Row>
                 <Col span={14}>
                     <Slider
-                        range={{ draggableTrack: true }}
-                        defaultValue={defaultValues}
+                        range={{draggableTrack: true}}
+                        value={value}
                         min={minRange}
                         max={maxRange}
                         step={step}
@@ -36,10 +61,10 @@ const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRang
                     />
                 </Col>
                 <Col span={4} className='ml-[15px]'>
-                    <Input value={Number(value[0])}/>
+                    <Input value={Number(value[0])} onChange={onMinValueChangeHandler} onBlur={onMinValueInputBlur}/>
                 </Col>
                 <Col span={4} className='ml-[10px]'>
-                    <Input value={Number(value[1])}/>
+                    <Input value={Number(value[1])} onChange={onMaxValueChangeHandler} onBlur={onMaxValueInputBlur}/>
                 </Col>
 
             </Row>

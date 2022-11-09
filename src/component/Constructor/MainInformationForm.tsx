@@ -1,4 +1,3 @@
-import { useFormik } from 'formik';
 import s from '../../styles/Constructor.module.css'
 import IntegerStep from '../uneversal/IntegerStep';
 import DoubleSlider from "../uneversal/DoubleSlider";
@@ -6,135 +5,50 @@ import MultipleSelect from "../uneversal/MultipleSelect";
 import UInput from "../uneversal/UInput";
 import ApplyCancelBtnBlock from "../uneversal/ApplyCancelBtnBlock";
 import { PATH } from '../../utils/appPath';
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const MainInformationForm = () => {
 
-    const formik = useFormik({
-        initialValues: {
-            title: '',
-            cookingTime: null,
-            milkType: null,
-            milkPH: null,
-            protein: null,
-            fat: null,
-        },
-        // validationSchema: LoginValidationSchema,
-        onSubmit: (values, actions) => {
-            const title = values.title
-            const cookingTime = values.cookingTime
-            const milkType = values.milkType
-            const milkPH = values.milkPH
-            const protein = values.protein
-            const fat = values.fat
-            console.log(title)
-            // dispatch(logInTC({email, password, rememberMe}))
-            // if (isAuth) {
-            //     navigate('/')
-            // }
-            actions.resetForm({values: {title: '',
-                    cookingTime: null,
-                    milkType: null,
-                    milkPH: null,
-                    protein: null,
-                    fat: null,}})
-        }
-    })
-
     const [titleValue, setTitleValue] = useState('')
     const [cookingTime, setCookingTime] = useState(4)
-    const [milkType, setMilkType] = useState('')
-    const [milkPH, setMilkPH] = useState(0)
-    const [protein, setProtein] = useState(0)
-    const [fat, setFat] = useState(0)
+    const [milkType, setMilkType] = useState([] as string[])
+    const [milkPH, setMilkPH] = useState([6.6,6.7] as [number,number])
+    const [protein, setProtein] = useState([3.2,3.4] as [number,number])
+    const [fat, setFat] = useState([3.6,4.0] as [number,number])
 
-    useEffect(()=>{
-        console.log(cookingTime)
-    }, [cookingTime])
-
+    const onSubmitHandler = () => {
+        console.log(titleValue, cookingTime, milkType, milkPH, protein, fat)
+    }
 
 
     return (
 
         <div>
-            <form onSubmit={formik.handleSubmit}>
-                <div className={s.main}>
-                    <UInput
-                        title={'Наименование'}
-                        placeholderValue={'Название сыра'}
-                        callback={setTitleValue}
-                        titleValue={titleValue}
-                    />
-                    <IntegerStep
-                        title={'Время приготовления'}
-                        minRange={1} maxRange={10}
-                        postfix={"hour"}
-                        value={cookingTime}
-                        callback={setCookingTime}
-                    />
-                    //todo doing from this step
-                    <MultipleSelect title={'Тип молока'} values={['Коровье','Козье','Ежовое','Смешанное']} placeholder={'Выберите тип молока'}/>
-                    <DoubleSlider title={'pH холодного молока'} minRange={6} maxRange={7} step={0.1} defaultValues={[6.6,6.7]}/>
-                    <DoubleSlider title={'Содержание белка'} minRange={3} maxRange={4} step={0.1} defaultValues={[3.2,3.4]}/>
-                    <DoubleSlider title={'Жирность'} minRange={3} maxRange={5} step={0.1} defaultValues={[3.6,4.0]}/>
-
-
-                    {/*<TextField*/}
-                    {/*    {...formik.getFieldProps('email')}*/}
-                    {/*    size='small'*/}
-                    {/*    type="string"*/}
-                    {/*    label="Email"*/}
-                    {/*    sx={{margin: '10px', width: '204px'}}*/}
-                    {/*    error={!!formik.errors.email && formik.touched.email}*/}
-                    {/*    helperText={formik.touched.email ? formik.errors.email : null}/>*/}
-                    {/*<TextField*/}
-                    {/*    {...formik.getFieldProps('password')}*/}
-                    {/*    InputProps={{*/}
-                    {/*        endAdornment: (*/}
-                    {/*            <InputAdornment position="end">*/}
-                    {/*                {!showHide*/}
-                    {/*                    ? <VisibilityIcon onClick={onClickShowPassword}/>*/}
-                    {/*                    : <VisibilityOffIcon onClick={onClickShowPassword}/>}*/}
-                    {/*            </InputAdornment>*/}
-                    {/*        ),*/}
-                    {/*    }}*/}
-                    {/*    className={s.passwordField}*/}
-                    {/*    sx={{width: '204px'}}*/}
-                    {/*    size='small'*/}
-                    {/*    type={showHide ? 'text' : 'password'}*/}
-                    {/*    label="Password"*/}
-                    {/*    error={!!formik.errors.password && formik.touched.password}*/}
-                    {/*    helperText={formik.touched.password ? formik.errors.password : null}*/}
-                    {/*/>*/}
-
-                    {/*<FormControlLabel*/}
-                    {/*    control={<Checkbox/>}*/}
-                    {/*    checked={formik.values.rememberMe}*/}
-                    {/*    name={"rememberMe"}*/}
-                    {/*    label={'remember'}*/}
-                    {/*    onChange={formik.handleChange}*/}
-                    {/*/>*/}
-                    {/*<div className={s.forgot}><Link to={PATH.LOGIN.RESTORE_PASS} >Forgot Password?</Link></div>*/}
-
-                    <div>
-                        {/*<Button variant='contained' type="reset" onClick={formik.handleReset}*/}
-                        {/*        sx={{marginRight: '30px'}}>*/}
-                        {/*    Cancel*/}
-                        {/*</Button>*/}
-                        {/*<Button variant='contained' type='submit'>*/}
-                        {/*    Sign in*/}
-                        {/*</Button>*/}
-                    </div>
-                    {/*<span>Don't have account?</span>*/}
-                    {/*<NavLink to={PATH.LOGIN.SIGN_UP} className={s.signLink}>Sign up</NavLink>*/}
-                </div>
-                <div className={s.btnBlock}>
-                    <ApplyCancelBtnBlock btnData={[
-                        {title:'Назад', linkPath: PATH.LIBRARY.CHEESES.MAIN, callback:()=>{}},
-                        {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.PASTEURIZATION, callback:()=>{formik.submitForm()}}]}/>
-                </div>
-
-            </form>
+            <div className={s.main}>
+                <UInput title={'Наименование'} placeholderValue={'Название сыра'} callback={setTitleValue}
+                    value={titleValue}
+                />
+                <IntegerStep title={'Время приготовления'} minRange={1} maxRange={10} postfix={"hour"}
+                    value={cookingTime} callback={setCookingTime}
+                />
+                <MultipleSelect valuePool={['Коровье','Козье','Ежовое','Смешанное']} title={'Тип молока'}
+                    value={milkType} callback={setMilkType} placeholder={'Выберите тип молока'}
+                />
+                <DoubleSlider title={'pH холодного молока'} minRange={6} maxRange={7} step={0.1} value={milkPH}
+                    callback={setMilkPH}
+                />
+                <DoubleSlider title={'Содержание белка'} minRange={3} maxRange={4} step={0.1} value={protein}
+                    callback={setProtein}
+                />
+                <DoubleSlider title={'Жирность'} minRange={3} maxRange={5} step={0.1} value={fat}
+                    callback={setFat}
+                />
+            </div>
+            <div className={s.btnBlock}>
+                <ApplyCancelBtnBlock btnData={[
+                    {title:'Назад', linkPath: PATH.LIBRARY.CHEESES.MAIN, callback:()=>{}},
+                    {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.PASTEURIZATION, callback:()=>{onSubmitHandler()}}]}/>
+            </div>
         </div>
     );
 };

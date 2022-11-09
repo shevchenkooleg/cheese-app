@@ -1,5 +1,4 @@
-import React from 'react';
-import {useFormik} from "formik";
+import React, {useState} from 'react';
 import MultipleSelect from "../uneversal/MultipleSelect";
 import DoubleSlider from "../uneversal/DoubleSlider";
 import s from '../../styles/Constructor.module.css'
@@ -9,73 +8,57 @@ import IntegerStep from "../uneversal/IntegerStep";
 
 const RipeningForm = () => {
 
+    const [leavenTitle, setLeavenTitle] = useState([] as string[])
+    const [leavenTime, setLeavenTime] = useState([30,40] as [number, number])
+    const [enzymeTitle, setEnzymeTitle] = useState([] as string[])
+    const [clottingTemperature, setClottingTemperature] = useState(36)
+    const [clottingK, setClottingK] = useState(1.5)
 
-    const ripening = {
-        leaven: {
-            title: 'Biochem SLB 10U',
-            time: {min: 30, max: 40},
-        },
-        enzyme: {
-            title: 'Hansen NATUREN Premium Plus 1400NB',
-            clotting: {temperature: 36, k: 1.5},
-        },
+    const onSubmitHandler = () => {
+        console.log(leavenTitle, leavenTime, enzymeTitle, clottingTemperature, clottingK)
     }
 
-    const formik = useFormik({
-        initialValues: {
-            leavenTitle: null,
-            leavenTime: null,
-            enzymeTitle: null,
-            clottingTime: null,
-            clottingTemperature: null,
-            clottingK: null,
 
-        },
-        // validationSchema: LoginValidationSchema,
-        onSubmit: (values, actions) => {
-            const leavenTitle = values.leavenTitle
-            const leavenTime = values.leavenTime
-            const enzymeTitle = values.enzymeTitle
-            const clottingTime = values.clottingTime
-            const clottingTemperature = values.clottingTemperature
-            const clottingK = values.clottingK
+    // const ripening = {
+    //     leaven: {
+    //         title: '',
+    //         time: {min: 30, max: 40},
+    //     },
+    //     enzyme: {
+    //         title: 'Hansen NATUREN Premium Plus 1400NB',
+    //         clotting: {temperature: 36, k: 1.5},
+    //     },
+    // }
 
-            // dispatch(logInTC({email, password, rememberMe}))
-            // if (isAuth) {
-            //     navigate('/')
-            // }
-            actions.resetForm({
-                values: {
-                    leavenTitle: null,
-                    leavenTime: null,
-                    enzymeTitle: null,
-                    clottingTime: null,
-                    clottingTemperature: null,
-                    clottingK: null,
-                }
-            })
-        }
-    })
 
     //todo сделать привязку к типам заквасок
     //todo сделать привязку к типам ферментов
 
     return (
         <div>
-            <form onSubmit={formik.handleSubmit}>
-                <div className={s.main}>
-                    <MultipleSelect title={'Тип закваски'} values={['Коровье','Козье','Ежовое','Смешанное']} placeholder={'Выберите тип закваски'}/>
-                    <DoubleSlider title={'Время до внесения фермента'} minRange={10} maxRange={60} step={1} defaultValues={[30,40]}/>
-                    <MultipleSelect title={'Тип фермента'} values={['Коровье','Козье','Ежовое','Смешанное']} placeholder={'Выберите тип фермента'}/>
-                    <IntegerStep title={'Температура сквашивания'} minRange={30} maxRange={50} postfix={"deg"} step={1} defaultValue={36}/>
-                    <IntegerStep title={'Коэффициент флокуляции'} minRange={1} maxRange={3} postfix={"unit"} step={0.5} defaultValue={1.5}/>
-                </div>
-                <div className={s.btnBlock}>
-                    <ApplyCancelBtnBlock btnData={[
-                        {title:'Назад', linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.PASTEURIZATION, callback:()=>{}},
-                        {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.CUTTING, callback:()=>{}}]}/>
-                </div>
-            </form>
+            <div className={s.main}>
+                <MultipleSelect title={'Тип закваски'} valuePool={['Biochem SLB 10U','Biochem SLB 20U','Biochem SLB 30U']}
+                                placeholder={'Выберите тип закваски'} value={leavenTitle} callback={setLeavenTitle}
+                />
+                <DoubleSlider title={'Время до внесения фермента'} minRange={10} maxRange={60} step={1}
+                              value={leavenTime} callback={setLeavenTime}
+                />
+                <MultipleSelect title={'Тип фермента'} valuePool={['Hansen NATUREN Premium Plus 1400NB','Hansen NATUREN Premium Plus 3400NB']}
+                                placeholder={'Выберите тип фермента'} value={enzymeTitle} callback={setEnzymeTitle}
+                />
+                <IntegerStep title={'Температура сквашивания'} minRange={30} maxRange={50} postfix={"deg"} step={1}
+                             value={clottingTemperature} callback={setClottingTemperature}
+                />
+                <IntegerStep title={'Коэффициент флокуляции'} minRange={1} maxRange={3} postfix={"unit"} step={0.5}
+                             value={clottingK} callback={setClottingK}
+                />
+            </div>
+            <div className={s.btnBlock}>
+                <ApplyCancelBtnBlock btnData={[
+                    {title:'Назад', linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.PASTEURIZATION, callback:()=>{}},
+                    {title:'Далее',linkPath:PATH.LIBRARY.CHEESES.CONSTRUCTOR.CUTTING, callback:()=>{onSubmitHandler()}
+                    }]}/>
+            </div>
         </div>
     );
 };
