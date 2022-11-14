@@ -5,10 +5,11 @@ import Link from "next/link";
 
 type RecipeCardPropsType = {
     recipe: MainInformationType
+    id: string
 }
 
-const RecipeCard: React.FC<RecipeCardPropsType> = ({recipe}) => {
-    const {title, cookingTime, initialData, id} = recipe
+const RecipeCard: React.FC<RecipeCardPropsType> = ({recipe, id}) => {
+    const {title, cookingTime, initialData} = recipe
     const {milkType} = initialData
     const milkTypeForRender = milkType.join(', ')
 

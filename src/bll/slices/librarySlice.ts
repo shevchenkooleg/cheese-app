@@ -7,8 +7,8 @@ type initialStateType = {
 
 const initialState: initialStateType = {
     recipes: [{
+        id: '1',
         mainInformation: {
-            id: 1,
             title: 'Качотта',
             cookingTime: 4,
             initialData: {
@@ -26,17 +26,17 @@ const initialState: initialStateType = {
         },
         ripening: {
             leaven: {
-                title: 'Biochem SLB 10U',
+                title: ['Biochem SLB 10U'],
                 time: {min: 30, max: 40},
             },
             enzyme: {
-                title: 'Hansen NATUREN Premium Plus 1400NB',
-                clotting: {time: 40, temperature: 36, k: 1.5},
+                title: ['Hansen NATUREN Premium Plus 1400NB'],
+                clotting: {temperature: 36, k: 1.5},
             },
         },
         cutting: {
             size: {width: 1, long: 1},
-            type: ['кукурузное зерно', 'нарезка венчиком'],
+            type: 'нарезка венчиком',
 
         },
         kneading: {
@@ -52,9 +52,7 @@ const initialState: initialStateType = {
                 total: 0.2,
                 option: '% от веса будущего сыра',
             },
-            additionally: ['Сухие травы обработать в микроволновке на 20 секунд',
-                'Пажитник - промыть и залить кипятком на 2-3 часа и добавить вместе с жидкостью в зерно',
-                'Пажитник обжарить на сухой раскаленной сковороде и добавить в зерно'],
+            additionally: 'Сухие травы обработать в микроволновке на 20 секунд'
         },
         layout: {
             type: ['выкладка наливом с сывороткой через формы (ковш)','насыпью без сыворотки (сито)'],
@@ -72,6 +70,7 @@ const initialState: initialStateType = {
             finallyTemperature: {min: 8, max: 12}
         },
         salting:{
+            saltingType: 'По-сухому',
             dry:{
                 totalWeight: {min: 20, max: 22},
                 saltingTime: 24
@@ -91,14 +90,14 @@ const initialState: initialStateType = {
             agingTime: {min: 30, max: 60},
             agingTemperature: {min: 10, max: 12},
             agingHumidity: {min: 85, max: 90},
-            care: ['Переворот каждый день', 'При нарастании естественной плесени - чистить полумягкой сухой щеткой']
+            care: 'Переворот каждый день. При нарастании естественной плесени - чистить полумягкой сухой щеткой'
         },
         storage:{
             storageTemperature: {min: 2, max: 5},
         }
     }, {
+        id: '2',
         mainInformation: {
-            id: 2,
             title: 'Моцарелла',
             cookingTime: 3,
             initialData: {
@@ -116,17 +115,17 @@ const initialState: initialStateType = {
         },
         ripening: {
             leaven: {
-                title: 'Biochem SLB 10U',
+                title: ['Biochem SLB 10U'],
                 time: {min: 30, max: 40},
             },
             enzyme: {
-                title: 'Hansen NATUREN Premium Plus 1400NB',
-                clotting: {time: 40, temperature: 36, k: 1.5},
+                title: ['Hansen NATUREN Premium Plus 1400NB'],
+                clotting: {temperature: 36, k: 1.5},
             },
         },
         cutting: {
             size: {width: 1, long: 1},
-            type: ['кукурузное зерно', 'нарезка венчиком'],
+            type: 'кукурузное зерно',
 
         },
         kneading: {
@@ -153,6 +152,7 @@ const initialState: initialStateType = {
             finallyTemperature: {min: 8, max: 12}
         },
         salting:{
+            saltingType: 'По-сухому',
             dry:{
                 totalWeight: {min: 20, max: 22},
                 saltingTime: 24,
@@ -172,7 +172,7 @@ const initialState: initialStateType = {
             agingTime: {min: 30, max: 60},
             agingTemperature: {min: 10, max: 12},
             agingHumidity: {min: 85, max: 90},
-            care: ['Переворот каждый день', 'При нарастании естественной плесени - чистить полумягкой сухой щеткой']
+            care: 'Переворот каждый день. При нарастании естественной плесени - чистить полумягкой сухой щеткой'
         },
         storage:{
             storageTemperature: {min: 2, max: 5},

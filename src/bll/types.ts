@@ -1,7 +1,4 @@
-export type MilkTypeType = 'Коровье' | 'Козье' | 'Смесь'
-export type CuttingTypeType = 'кукурузное зерно' | 'нарезка венчиком'
-export type LayoutTypeType = 'выкладка наливом с сывороткой через формы (ковш)' | 'насыпью без сыворотки (сито)'
-export type SpicesTypeType = 'розмарин' | 'итальянские травы' | 'лук-шалот' | 'перец' | 'сухой чеснок' | 'пажитник'
+
 
 export type DataRangeType = {
     min: number
@@ -9,14 +6,13 @@ export type DataRangeType = {
 }
 
 export type MainInformationInitialDataType = {
-    milkType: MilkTypeType[]
+    milkType: string[]
     milkPH: DataRangeType
     protein: DataRangeType
     fat: DataRangeType
 }
 
 export type MainInformationType = {
-    id: number
     title: string
     cookingTime: number
     initialData: MainInformationInitialDataType
@@ -30,18 +26,17 @@ export type PasteurizationType = {
 }
 
 export type LeavenType = {
-    title: string
+    title: string[]
     time: DataRangeType
 }
 
 export type ClottingType = {
-    time: number
     temperature: number
     k: number
 }
 
 export type EnzymeType = {
-    title: string
+    title: string[]
     clotting: ClottingType
 }
 
@@ -57,7 +52,7 @@ export type CuttingSizeType = {
 
 export type CuttingType = {
     size: CuttingSizeType
-    type: CuttingTypeType[]
+    type: string
 
 }
 export type KneadingType = {
@@ -70,16 +65,16 @@ export type SpicesWeightType = {
 }
 
 export type SpicesType = {
-    type: SpicesTypeType[]
+    type: string[]
     weight: SpicesWeightType
-    additionally: string[]
+    additionally: string
 }
 export type SecondHeatingType = {
     heatingTemperature: DataRangeType
     heatingTime: DataRangeType
 }
 export type LayoutType = {
-    type: LayoutTypeType[]
+    type: string[]
     milkPH: DataRangeType
 }
 export type CoupsType = {
@@ -87,11 +82,11 @@ export type CoupsType = {
     restCount: number
     restTime: DataRangeType
     totalTime: DataRangeType
-    drainageType: 'самопрессование' | 'искусственное прессование'
+    drainageType: string
     milkPH: DataRangeType
-    finallyTime: DataRangeType
-    finalAction: string
-    finallyTemperature: DataRangeType
+    finallyTime: DataRangeType | null
+    finalAction: string | null
+    finallyTemperature: DataRangeType | null
 }
 export type DrySaltingType = {
     totalWeight: DataRangeType
@@ -103,6 +98,7 @@ export type WetSaltingType = {
     saltingTime: number
 }
 export type SaltingType = {
+    saltingType: string
     dry: DrySaltingType
     wet: WetSaltingType
 }
@@ -115,19 +111,20 @@ export type AgingType = {
     agingTime: DataRangeType
     agingTemperature: DataRangeType
     agingHumidity: DataRangeType
-    care: string[]
+    care: string
 }
 export type StorageType = {
     storageTemperature: DataRangeType
 }
 
 export type RecipeType = {
+    id: string
     mainInformation: MainInformationType
     pasteurization: PasteurizationType
     ripening: RipeningType
     cutting: CuttingType
     kneading: KneadingType
-    secondHeating: SecondHeatingType
+    secondHeating: SecondHeatingType | null
     spices: SpicesType | null
     layout: LayoutType
     coups: CoupsType
@@ -143,7 +140,7 @@ export type NavigationType = {
     path: string
 }
 
-export type PostfixType = 'sec' | 'min' | 'hour' | 'deg' | 'unit' | '%'
+export type PostfixType = 'sec' | 'min' | 'hour' | 'deg' | 'unit' | '%' | 'cm'
 
 
 

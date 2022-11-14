@@ -1,6 +1,6 @@
 import s from '../../styles/Information.module.css';
 import React from "react";
-import {CoupsType, DataRangeType} from "../../bll/types";
+import {CoupsType} from "../../bll/types";
 
 type CoupsPropsType = {
     coups: CoupsType
@@ -37,14 +37,14 @@ const Coups:React.FC<CoupsPropsType> = ({coups}) => {
                 <div>pH зерна после дренажирования:</div>
                 <div>{milkPH.min} - {milkPH.max}</div>
             </div>
-            <div className={s.tableElement}>
+            {finallyTime && <div className={s.tableElement}>
                 <div>Время с момента закладки заквасок:</div>
                 <div className='text-right'>{finallyTime.min} - {finallyTime.max} часов</div>
-            </div>
-            <div className={s.tableElement}>
+            </div>}
+            {finallyTemperature && <div className={s.tableElement}>
                 <div>Остановка набора кислотности:</div>
                 <div className='text-right'>{finalAction} {finallyTemperature.min} - {finallyTemperature.max} &deg;С</div>
-            </div>
+            </div>}
         </div>
     );
 };

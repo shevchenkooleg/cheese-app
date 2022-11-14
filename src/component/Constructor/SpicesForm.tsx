@@ -6,23 +6,33 @@ import {PATH} from "../../utils/appPath";
 import MyCheckBox from "../uneversal/MyCheckBox";
 import TextArea from 'antd/lib/input/TextArea';
 import MultipleSelect from "../uneversal/MultipleSelect";
+import {useAppDispatch, useAppSelector} from "../../utils/hooks";
+import { setSpicesAC } from '../../bll/slices/newRecipeSlice';
 
 const SpicesForm = () => {
 
-    const [spices,setSpices] = useState(false)
-    const [spicesType, setSpicesType] = useState([] as string[])
-    const [spicesWeight, setSpicesWeight] = useState(0.2)
-    const [spicesComment, setSpicesComment] = useState('')
+    const dispatch = useAppDispatch()
+    const newRecipeData = useAppSelector(state=>state.newRecipe.spices)
+    const [spices,setSpices] = useState(!!newRecipeData && newRecipeData.weight)
+    const [spicesType, setSpicesType] = useState(newRecipeData ? newRecipeData.type : [] as string[])
+    const [spicesWeight, setSpicesWeight] = useState(newRecipeData && newRecipeData.weight ? newRecipeData.weight.total : 0.2)
+    const [spicesComment, setSpicesComment] = useState(newRecipeData ? newRecipeData.additionally : '')
 
     const onTextAreaChangeHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setSpicesComment(e.currentTarget.value)
     }
 
     const onSubmitHandler = () => {
-        spices
-            ? console.log(spices, spicesType, spicesWeight, spicesComment)
-            : console.log(spices)
-
+        let spicesData
+        spices ? spicesData = {
+            type: spicesType,
+            weight: {
+                total: spicesWeight,
+                option: '% от веса будущего сыра',
+            },
+            additionally: spicesComment,
+        } : spicesData = null
+        dispatch(setSpicesAC({spices: spicesData}))
     }
 
 

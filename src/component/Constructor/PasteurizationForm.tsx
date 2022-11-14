@@ -4,16 +4,26 @@ import IntegerStep from "../uneversal/IntegerStep";
 import DoubleSlider from "../uneversal/DoubleSlider";
 import ApplyCancelBtnBlock from "../uneversal/ApplyCancelBtnBlock";
 import {PATH} from "../../utils/appPath";
+import {useAppDispatch, useAppSelector} from "../../utils/hooks";
+import { setPasteurization } from '../../bll/slices/newRecipeSlice';
 
 const PasteurizationForm = () => {
 
-    const [pasteurizationTemperature, setPasteurizationTemperature] = useState(72)
-    const [pasteurizationTime, setPasteurizationTime] = useState(15)
-    const [coolingTemperature, setCoolingTemperature] = useState([36,37] as [number, number])
-    const [milkPH, setMilkPH] = useState([6.4,6.5] as [number, number])
+    const dispatch = useAppDispatch()
+    const newRecipeData = useAppSelector(state => state.newRecipe.pasteurization)
+    const [pasteurizationTemperature, setPasteurizationTemperature] = useState(newRecipeData ? newRecipeData.pasteurizationTemperature :  72)
+    const [pasteurizationTime, setPasteurizationTime] = useState(newRecipeData ? newRecipeData.pasteurizationTime : 15)
+    const [coolingTemperature, setCoolingTemperature] = useState(newRecipeData.coolingTemperature ? [newRecipeData.coolingTemperature.min, newRecipeData.coolingTemperature.max] as [number, number] : [36,37] as [number, number])
+    const [milkPH, setMilkPH] = useState(newRecipeData.milkPH ? [newRecipeData.milkPH.min, newRecipeData.milkPH.max] as [number, number] : [6.4,6.5] as [number, number])
 
     const onSubmitHandler = () => {
-        console.log(pasteurizationTemperature, pasteurizationTime, coolingTemperature, milkPH)
+        const pasteurizationData = {
+            pasteurizationTemperature,
+            pasteurizationTime,
+            coolingTemperature: {min: coolingTemperature[0], max: coolingTemperature[1]},
+            milkPH: {min: milkPH[0], max: milkPH[1]},
+        }
+        dispatch(setPasteurization({pasteurization: pasteurizationData}))
     }
 
 

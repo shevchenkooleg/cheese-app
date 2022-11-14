@@ -9,7 +9,6 @@ type CuttingPropsType = {
 const Cutting: React.FC<CuttingPropsType> = ({cutting}) => {
 
     const {size, type} = cutting
-    const typeForRendering = type.join(', ')
 
     return (
         <div className={s.container}>
@@ -20,7 +19,7 @@ const Cutting: React.FC<CuttingPropsType> = ({cutting}) => {
             </div>
             <div className={s.tableElement}>
                 <div>Тип нарезки:</div>
-                <div className={s.cutting}>{typeForRendering}</div>
+                <div className={s.cutting}>{type}</div>
             </div>
         </div>
     );

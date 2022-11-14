@@ -9,13 +9,10 @@ export const postfixGenerator = (value: number, postfixType: PostfixType) => {
             case 1: {
                 return 'час'
             }
-                ;
             case 2: {
             }
-                ;
             case 3: {
             }
-                ;
             case 4: {
                 return 'часа'
             }
@@ -30,13 +27,10 @@ export const postfixGenerator = (value: number, postfixType: PostfixType) => {
             case 1: {
                 return 'секунда'
             }
-                ;
             case 2: {
             }
-                ;
             case 3: {
             }
-                ;
             case 4: {
                 return 'секунды'
             }
@@ -53,5 +47,9 @@ export const postfixGenerator = (value: number, postfixType: PostfixType) => {
         {
             return 'минут'
         }
-    } else if (postfixType === '%'){return '%'}
+    } else if (postfixType === '%'){
+        return '%'
+    } else if (postfixType === 'cm'){
+        return 'см'
+    }
 }

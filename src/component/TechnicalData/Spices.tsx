@@ -9,7 +9,6 @@ const Spices:React.FC<SpicesPropsType> = ({spices}) => {
 
     const {type, weight, additionally} = spices
     const spicesTypeForRendering = type.join(', ')
-    const additionallyForRendering = additionally.join(', ')
 
 
     return (
@@ -25,7 +24,7 @@ const Spices:React.FC<SpicesPropsType> = ({spices}) => {
             </div>
             <div className={s.tableElement}>
                 <div>Способ применения: </div>
-                <div className='text-right'>{additionallyForRendering}</div>
+                <div className='text-right break-all'>{additionally}</div>
             </div>
 
         </div>

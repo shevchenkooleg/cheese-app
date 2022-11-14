@@ -1,5 +1,5 @@
 import s from '../../styles/Information.module.css';
-import {DataRangeType, LayoutType, LayoutTypeType} from "../../bll/types";
+import {LayoutType} from "../../bll/types";
 import React from "react";
 
 type LayoutPropsType = {
@@ -8,7 +8,7 @@ type LayoutPropsType = {
 
 const Layout: React.FC<LayoutPropsType> = ({layout}) => {
 
-    const {type, milkPH} = layout
+    const {type = ['some type'], milkPH} = layout
     const typeLayoutForRendering = type.join(', ')
 
     return (

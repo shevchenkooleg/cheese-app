@@ -16,6 +16,9 @@ import Salting from "../../../src/component/TechnicalData/Salting";
 import Drying from "../../../src/component/TechnicalData/Drying";
 import Aging from "../../../src/component/TechnicalData/Aging";
 import Storage from "../../../src/component/TechnicalData/Storage";
+import ApplyCancelBtnBlock from "../../../src/component/uneversal/ApplyCancelBtnBlock";
+import {PATH} from "../../../src/utils/appPath";
+import {RecipeType} from "../../../src/bll/types";
 
 
 const cheesesNavigation = [
@@ -27,7 +30,22 @@ const cheesesNavigation = [
 const cheese = () => {
 
     const {query} = useRouter()
-    const recipe = useAppSelector(state => state.library.recipes.filter(el => el.mainInformation.id === Number(query.id))[0])
+    let recipe: RecipeType
+    if (query.id === 'NEW'){
+        console.log('yes')
+        recipe = useAppSelector(state => state.newRecipe)
+    } else {
+        console.log('no')
+        recipe = useAppSelector(state => state.library.recipes.filter(el => el.id === query.id)[0])
+    }
+
+    console.log(recipe)
+
+    const addNewRecipeHandler = () => {
+        console.log(recipe)
+    }
+
+// recipe = useAppSelector(state => state.library.recipes.filter(el => el.id === query.id)[0])
 
     return (
         <div className='container'>
@@ -43,7 +61,7 @@ const cheese = () => {
                         <Cutting cutting={recipe.cutting}/>
                         <Kneading kneading={recipe.kneading}/>
                         {recipe.spices !== null && <Spices spices={recipe.spices}/>}
-                        <SecondHeating secondHeating={recipe.secondHeating}/>
+                        {recipe.secondHeating && <SecondHeating secondHeating={recipe.secondHeating}/>}
                         <Layout layout={recipe.layout}/>
                         <Coups coups={recipe.coups}/>
                         <Salting salting={recipe.salting}/>
@@ -51,7 +69,20 @@ const cheese = () => {
                         <Aging aging={recipe.aging}/>
                         <Storage storage={recipe.storage}/>
                     </div>
-                    <Navbar navigation={cheesesNavigation}/>
+                    {query.id === 'NEW'
+                        ?
+                        <>
+                            <div className='text-[20px] text-red-300 my-[20px] flex justify-center'>
+                                Сохранить данную техкарту?
+                            </div>
+                            <div className='h-[60px]'>
+                                <ApplyCancelBtnBlock btnData={[
+                                    {title:'НЕТ', linkPath: PATH.LIBRARY.CHEESES.CONSTRUCTOR.AGING, callback:()=>{}},
+                                    {title:'ДА',linkPath:PATH.LIBRARY.CHEESES.MAIN, callback:()=>{addNewRecipeHandler()}}]}/>
+                            </div>
+                        </>
+                        : <Navbar navigation={cheesesNavigation}/>}
+
                 </div>
             </div>
             }

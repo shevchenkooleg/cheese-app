@@ -9,7 +9,6 @@ type AgingPropsType = {
 const Aging:React.FC<AgingPropsType> = ({aging}) => {
 
     const {agingTime, agingTemperature, agingHumidity, care} = aging
-    const careForRendering = care.join(', ')
 
     return (
         <div className={s.container}>
@@ -28,7 +27,7 @@ const Aging:React.FC<AgingPropsType> = ({aging}) => {
             </div>
             <div className={s.tableElement}>
                 <div>Уход:</div>
-                <div className='text-right'>{careForRendering}</div>
+                <div className='text-right break-all'>{care}</div>
             </div>
         </div>
     );

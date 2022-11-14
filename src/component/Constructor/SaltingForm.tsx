@@ -5,20 +5,38 @@ import {PATH} from "../../utils/appPath";
 import SingleSelect from "../uneversal/SingleSelect";
 import IntegerStep from "../uneversal/IntegerStep";
 import DoubleSlider from "../uneversal/DoubleSlider";
+import {useAppDispatch, useAppSelector} from "../../utils/hooks";
+import {setSalting} from "../../bll/slices/newRecipeSlice";
 
 const SaltingForm = () => {
 
-    const [saltingType, setSaltingType] = useState('')
-    const [concentration, setConcentration] = useState(20)
-    const [brinePH, setBrinePH] = useState([5.2,5.3] as [number, number])
-    const [totalSaltWeight, setTotalSaltWeight] = useState([20,22] as [number, number])
-    const [totalSaltTime, setTotalTime] = useState(1)
+    const dispatch = useAppDispatch()
+    const newRecipeData = useAppSelector(state=> state.newRecipe.salting)
+    const [saltingType, setSaltingType] = useState(newRecipeData.saltingType ? newRecipeData.saltingType : '')
+    const [concentration, setConcentration] = useState(newRecipeData && newRecipeData.wet
+        ? newRecipeData.wet.concentration : 20)
+    const [brinePH, setBrinePH] = useState(newRecipeData && newRecipeData.wet
+        ? [newRecipeData.wet.brinePH.min, newRecipeData.wet.brinePH.max] as [number, number]
+        : [5.2,5.3] as [number, number])
+    const [totalSaltWeight, setTotalSaltWeight] = useState(newRecipeData && newRecipeData.dry
+        ? [newRecipeData.dry.totalWeight.min, newRecipeData.dry.totalWeight.max] as [number, number]
+        : [20,22] as [number, number])
+    const [totalSaltTime, setTotalTime] = useState(newRecipeData && newRecipeData.dry ? newRecipeData.dry.saltingTime : 1)
 
     const onSubmitHandler = () => {
-        saltingType === 'Рассол'
-            ? console.log(saltingType, concentration, brinePH, totalSaltTime)
-            : console.log(saltingType, totalSaltWeight, totalSaltTime)
-
+        const saltingData = {
+            saltingType: saltingType,
+            dry:{
+                totalWeight: {min: totalSaltWeight[0], max: totalSaltWeight[1]},
+                saltingTime: totalSaltTime,
+            },
+            wet:{
+                concentration: concentration,
+                brinePH: {min: brinePH[0], max: brinePH[1]},
+                saltingTime: totalSaltTime,
+            }
+        }
+        dispatch(setSalting({salting: saltingData}))
     }
 
 

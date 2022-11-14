@@ -1,7 +1,8 @@
+@import '~antd/dist/antd.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import '~antd/dist/antd.css';
+
 
 
 @font-face {
@@ -58,7 +59,7 @@
   min-height: 100vh;
 }
 .content {
-  backdrop-filter: blur(7px)
+  backdrop-filter: blur(7px);
 }
 
 .main {

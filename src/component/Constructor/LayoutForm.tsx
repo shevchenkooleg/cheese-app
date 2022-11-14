@@ -4,15 +4,22 @@ import ApplyCancelBtnBlock from "../uneversal/ApplyCancelBtnBlock";
 import {PATH} from "../../utils/appPath";
 import MultipleSelect from "../uneversal/MultipleSelect";
 import DoubleSlider from "../uneversal/DoubleSlider";
+import {useAppDispatch, useAppSelector} from "../../utils/hooks";
+import {setLayout} from "../../bll/slices/newRecipeSlice";
 
 const LayoutForm = () => {
 
-
-    const [layoutType, setLayoutType] = useState([] as string[])
-    const [milkPH, setMilkPH] = useState([6.3, 6.4] as [number, number])
+    const dispatch = useAppDispatch()
+    const newRecipeData = useAppSelector(state=>state.newRecipe.layout)
+    const [layoutType, setLayoutType] = useState(newRecipeData ? newRecipeData.type : [] as string[])
+    const [milkPH, setMilkPH] = useState(newRecipeData.milkPH ? [newRecipeData.milkPH.min, newRecipeData.milkPH.max] as [number, number] : [6.3, 6.4] as [number, number])
 
     const onSubmitHandler = () => {
-        console.log(layoutType, milkPH)
+        const layoutData = {
+            type: layoutType,
+            milkPH: {min: milkPH[0], max: milkPH[1]},
+        }
+        dispatch(setLayout({layout: layoutData}))
     }
 
 

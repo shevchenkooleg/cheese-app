@@ -33,7 +33,7 @@ const Cheeses = () => {
                     </div>
                     <div className={s.table}>
                         {recipes.map(el =>
-                            <RecipeCard key={el.mainInformation.id} recipe={el.mainInformation}/>
+                            <RecipeCard key={el.id} recipe={el.mainInformation} id={el.id}/>
                         )}
                     </div>
                 </div>
