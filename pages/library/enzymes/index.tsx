@@ -1,46 +1,46 @@
+import Link from 'next/link';
+import React, {useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from "../../../src/utils/hooks";
+import {Modal} from "antd";
 import s from "../../../src/styles/Cheeses.module.css";
-import RecipeCard from "../../../src/component/RecipeCard";
+import {PATH} from "../../../src/utils/appPath";
 import Navbar from "../../../src/component/Navbar";
-import Link from "next/link";
-import { PATH } from "../../../src/utils/appPath";
-import {useEffect, useState} from "react";
-import {deleteRecipe, getAllRecipe} from "../../../src/bll/slices/recipesSlice";
-import { Modal } from "antd";
+import {getAllEnzymes} from "../../../src/bll/slices/enzymeSlice";
+import EnzymeCard from "../../../src/component/EnzymeCard";
 
-
-const cheesesNavigation = [
+const leavensNavigation = [
     {id: 1, title: 'Домой', path: PATH.HOME.MAIN},
     {id: 2, title: 'Назад', path: PATH.LIBRARY.MAIN},
     {id: 3, title: 'Настройки', path: PATH.SETTINGS.MAIN},
 ]
 
-const Cheeses = () => {
 
+const Enzymes = () => {
     const dispatch = useAppDispatch()
 
-    useEffect(()=>{
-        console.log('effect')
-        dispatch(getAllRecipe())
-    },[])
+    useEffect(() => {
+        dispatch(getAllEnzymes())
+    }, [])
 
-    const recipes = useAppSelector(state => state.recipes.recipes)
+    const enzymes = useAppSelector(state => state.enzymes.enzymes)
     const [visible, setVisible] = useState(false)
     const [title, setTitle] = useState('')
     const [idForDelete, setIdForDelete] = useState('')
 
-    const removeRecipeHandler = () => {
+    const removeLeavenHandler = () => {
         // console.log('delete', title, idForDelete)
-        dispatch(deleteRecipe({recipeId: idForDelete}))
+        // dispatch(deleteRecipe({recipeId: idForDelete}))
         setVisible(false)
     }
 
+    console.log(enzymes)
 
     return (
         <>
-            <Modal okType={'default'} title={'Attention!'} open={visible} onOk={removeRecipeHandler} onCancel={() => setVisible(false)}>
+            <Modal okType={'default'} title={'Attention!'} open={visible} onOk={removeLeavenHandler}
+                   onCancel={() => setVisible(false)}>
                 <p className={s.titleModal}>Do you want to <span
-                    className={s.textModal}>DELETE</span> <span className={s.attention}>{title}</span> recipe?</p>
+                    className={s.textModal}>DELETE</span> <span className={s.attention}>{title}</span> leaven?</p>
                 <div className={s.insideModal}>
                 </div>
             </Modal>
@@ -48,27 +48,31 @@ const Cheeses = () => {
                 <div className='content'>
                     <div className='main'>
                         <div className={s.title}>
-                            Сыры
+                            Ферменты
                         </div>
                         <div className={s.linkTitle}>
                             <button>
-                                <Link href={PATH.LIBRARY.CHEESES.CONSTRUCTOR.MAIN}>
-                                    Добавить технологическую карту
+                                <Link href={PATH.LIBRARY.ENZYMES.CONSTRUCTOR}>
+                                    Добавить фермент
                                 </Link>
                             </button>
                         </div>
                         <div className={s.table}>
-                            {recipes.map(el =>
-                                <RecipeCard key={el.id} recipe={el.mainInformation} id={el.id} setModalShow={setVisible}
-                                            setTitle={setTitle} setIdForDelete={setIdForDelete}/>
+
+
+
+
+                            {!!enzymes && enzymes.map(enz =>
+                                <EnzymeCard key={enz._id} setModalShow={setVisible}
+                                            setTitle={setTitle} setIdForDelete={setIdForDelete} enzyme={enz}/>
                             )}
                         </div>
                     </div>
-                    <Navbar navigation={cheesesNavigation}/>
+                    <Navbar navigation={leavensNavigation}/>
                 </div>
             </div>
         </>
     );
 };
 
-export default Cheeses;
+export default Enzymes;

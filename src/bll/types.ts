@@ -1,5 +1,3 @@
-
-
 export type DataRangeType = {
     min: number
     max: number
@@ -33,6 +31,7 @@ export type LeavenType = {
 export type ClottingType = {
     temperature: number
     k: number
+    time: number
 }
 
 export type EnzymeType = {
@@ -140,8 +139,57 @@ export type NavigationType = {
     path: string
 }
 
-export type PostfixType = 'sec' | 'min' | 'hour' | 'deg' | 'unit' | '%' | 'cm'
+export type PostfixType = 'sec' | 'min' | 'hour' | 'deg' | 'unit' | '%' | 'cm' | 'g'
 
+
+export type CreateRecipeParamsType = {
+    title: string
+    recipe: string
+}
+
+export type DBRecipeObjectType = {
+    _id: string
+    title: string
+    recipe: string
+    __v: number
+}
+
+export type CreateLeavenParamsType = {
+    title: string,
+    leavenPowerMin: number,
+    leavenPowerMax: number,
+    leavenConcentration: string,
+    initialWeight: number,
+    dateOfManufacture: string,
+    dateOfPacketOpen: string
+}
+export type LeavenObjectType = {
+    _id: string
+    title: string,
+    leavenPowerMin: number,
+    leavenPowerMax: number,
+    leavenConcentration: string,
+    initialWeight: number,
+    dateOfManufacture: string,
+    dateOfPacketOpen: string
+}
+export type CreateEnzymeParamsType = {
+    title: string,
+    enzymePowerMin: number,
+    enzymePowerMax: number,
+    initialWeight: number,
+    bestBeforeDate: string,
+    dateOfPacketOpen: string
+}
+export type EnzymeObjectType = {
+    _id: string
+    title: string,
+    enzymePowerMin: number,
+    enzymePowerMax: number,
+    initialWeight: number,
+    bestBeforeDate: string,
+    dateOfPacketOpen: string
+}
 
 
 // export type RecipeDBType = {

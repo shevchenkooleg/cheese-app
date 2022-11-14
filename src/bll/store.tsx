@@ -1,13 +1,17 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
-import libraryReducer from '../bll/slices/librarySlice'
-import testReducer from '../bll/slices/tetsSlice'
+import recipesReducer from './slices/recipesSlice'
+import testReducer from './slices/tetsSlice'
 import newRecipeReducer from './slices/newRecipeSlice'
+import leavensReducer from './slices/leavensSlice'
+import enzymesReducer from './slices/enzymeSlice'
 
 
 export const rootReducer = combineReducers({
-    library: libraryReducer,
+    recipes: recipesReducer,
     tests: testReducer,
     newRecipe: newRecipeReducer,
+    leavens: leavensReducer,
+    enzymes: enzymesReducer,
 })
 
 export const store = configureStore({

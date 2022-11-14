@@ -1,0 +1,47 @@
+.mainTitle {
+    font-size: 26px;
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+}
+.leaven {
+    min-height: 90vh;
+    width: 100%;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.container {
+    margin: 50px 10px 0 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    font-size: 17px;
+    border-bottom: 2px solid rgba(0,0,0,1);
+}
+.title {
+    font-size: 18px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+}
+.tableElement {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.altTableElement {
+    display: flex;
+    justify-content: space-between;
+}
+.enzyme {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+.cutting {
+    text-align: right;
+}

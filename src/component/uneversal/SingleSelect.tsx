@@ -6,7 +6,7 @@ import s from "../../styles/Constructor.module.css";
 
 type SingleSelectPropsType = {
     title: string
-    value: string
+    value: string | undefined
     valuePool: string[]
     placeholder: string
     callback: (value:string)=>void
@@ -37,7 +37,7 @@ const SingleSelect: React.FC<SingleSelectPropsType> = ({title, value, valuePool,
                 onChange={onChange}
                 options={options}
                 className='w-[100%]'
-                value={value}
+                value={value !== '' ? value : undefined}
             />
         </div>
 

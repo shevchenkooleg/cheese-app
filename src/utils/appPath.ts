@@ -20,7 +20,14 @@ export const PATH = {
                 AGING: '/library/cheeses/constructor/aging',
             }
         },
-        LEAVEN: '/library/leaven'
+        LEAVENS: {
+            MAIN: '/library/leavens',
+            CONSTRUCTOR: '/library/leavens/constructor',
+        },
+        ENZYMES: {
+            MAIN: '/library/enzymes',
+            CONSTRUCTOR: '/library/enzymes/constructor',
+        }
     },
     ASSISTANT: {
         MAIN: '/assistant'

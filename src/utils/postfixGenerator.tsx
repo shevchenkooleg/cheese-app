@@ -51,5 +51,7 @@ export const postfixGenerator = (value: number, postfixType: PostfixType) => {
         return '%'
     } else if (postfixType === 'cm'){
         return 'см'
+    } else if (postfixType === 'g'){
+        return 'г'
     }
 }

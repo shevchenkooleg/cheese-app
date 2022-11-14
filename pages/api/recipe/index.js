@@ -1,43 +1,34 @@
 import Recipe from "../../../serverUtils/models/Recipe";
 import dbConnect from "../../../serverUtils/dbConnect";
-import {getSession} from "next-auth/react";
 
 export default async function handler(req, res) {
     const {method} = req
     await dbConnect()
-    const session = await getSession({req});
-    const {user} = session
+    // const session = await getSession({req});
+    // const {user} = session
 
     switch (method) {
         case 'GET':
             try {
-                const recipes = await Recipe.find({})
+                const recipes = await Recipe.find()
                 console.log(recipes)
                 res.status(200).json({recipes})
             } catch (error) {
                 res.status(400).json({success: false})
             }
             break
-        // case 'POST':
-        //     let {title, note_text, color, note_mode} = req.body
-        //     if(!title) {
-        //         title = 'Add your title'
-        //     }
-        //     try {
-        //         const newNote = await Note.create({
-        //             title,
-        //             note_text,
-        //             color,
-        //             note_mode,
-        //             user: user.id,
-        //             createdAt: Date().toString(),
-        //             pinned: false
-        //         })
-        //         res.status(201).json({newNote})
-        //     } catch (error) {
-        //         res.status(400).json({success: false})
-        //     }
-        //     break
+        case 'POST':
+            let data = req.body
+            console.log(data)
+            try {
+                const newRecipe = await Recipe.create(
+                    data
+                )
+                res.status(201).json({newRecipe})
+            } catch (error) {
+                res.status(400).json({success: false})
+            }
+            break
         default:
             res.status(400).json({success: false})
             break

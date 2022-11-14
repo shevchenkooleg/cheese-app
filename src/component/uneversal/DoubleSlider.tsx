@@ -9,9 +9,11 @@ type DoubleSliderPropsType = {
     step: number
     value: [number, number]
     callback: (newValue: [number, number]) => void
+    sliderWidth?: number
+    inputWidth?: number
 }
 
-const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRange, step, value, callback}) => {
+const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRange, step, value, callback, sliderWidth=14, inputWidth=4}) => {
 
     const onChangeHandler = (newValue: [number, number]) => {
         callback(newValue)
@@ -50,7 +52,7 @@ const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRang
                 {title}
             </div>
             <Row>
-                <Col span={14}>
+                <Col span={sliderWidth}>
                     <Slider
                         range={{draggableTrack: true}}
                         value={value}
@@ -60,10 +62,10 @@ const DoubleSlider: React.FC<DoubleSliderPropsType> = ({title, minRange, maxRang
                         onChange={onChangeHandler}
                     />
                 </Col>
-                <Col span={4} className='ml-[15px]'>
+                <Col span={inputWidth} className='ml-[15px]'>
                     <Input value={Number(value[0])} onChange={onMinValueChangeHandler} onBlur={onMinValueInputBlur}/>
                 </Col>
-                <Col span={4} className='ml-[10px]'>
+                <Col span={inputWidth} className='ml-[10px]'>
                     <Input value={Number(value[1])} onChange={onMaxValueChangeHandler} onBlur={onMaxValueInputBlur}/>
                 </Col>
 

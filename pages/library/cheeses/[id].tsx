@@ -3,7 +3,7 @@ import {useRouter} from "next/router";
 import s from "../../../src/styles/Cheese.module.css";
 import Navbar from "../../../src/component/Navbar";
 import MainInformation from "../../../src/component/TechnicalData/MainInformation";
-import {useAppSelector} from "../../../src/utils/hooks";
+import {useAppDispatch, useAppSelector} from "../../../src/utils/hooks";
 import Pasteurization from "../../../src/component/TechnicalData/Pasteurization";
 import Ripening from "../../../src/component/TechnicalData/Ripening";
 import Cutting from "../../../src/component/TechnicalData/Cutting";
@@ -19,16 +19,18 @@ import Storage from "../../../src/component/TechnicalData/Storage";
 import ApplyCancelBtnBlock from "../../../src/component/uneversal/ApplyCancelBtnBlock";
 import {PATH} from "../../../src/utils/appPath";
 import {RecipeType} from "../../../src/bll/types";
+import {createRecipe} from "../../../src/bll/slices/recipesSlice";
 
 
 const cheesesNavigation = [
-    {id: 1, title: 'Home', path: '/'},
-    {id: 2, title: 'Cheeses', path: '/library/cheeses'},
-    {id: 3, title: 'Settings', path: '/settings'},
+    {id: 1, title: 'Домой', path: '/'},
+    {id: 2, title: 'Назад', path: '/library/cheeses'},
+    {id: 3, title: 'Настройки', path: '/settings'},
 ]
 
 const cheese = () => {
 
+    const dispatch = useAppDispatch()
     const {query} = useRouter()
     let recipe: RecipeType
     if (query.id === 'NEW'){
@@ -36,16 +38,19 @@ const cheese = () => {
         recipe = useAppSelector(state => state.newRecipe)
     } else {
         console.log('no')
-        recipe = useAppSelector(state => state.library.recipes.filter(el => el.id === query.id)[0])
+        recipe = useAppSelector(state => state.recipes.recipes.filter(el => el.id === query.id)[0])
     }
 
     console.log(recipe)
 
     const addNewRecipeHandler = () => {
         console.log(recipe)
+        const neeRecipeDataForDB = {
+            title: recipe.mainInformation.title,
+            recipe: JSON.stringify(recipe)
+        }
+        dispatch(createRecipe(neeRecipeDataForDB))
     }
-
-// recipe = useAppSelector(state => state.library.recipes.filter(el => el.id === query.id)[0])
 
     return (
         <div className='container'>

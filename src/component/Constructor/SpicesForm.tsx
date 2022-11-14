@@ -13,7 +13,7 @@ const SpicesForm = () => {
 
     const dispatch = useAppDispatch()
     const newRecipeData = useAppSelector(state=>state.newRecipe.spices)
-    const [spices,setSpices] = useState(!!newRecipeData && newRecipeData.weight)
+    const [spices,setSpices] = useState(newRecipeData && newRecipeData.weight ? true : false)
     const [spicesType, setSpicesType] = useState(newRecipeData ? newRecipeData.type : [] as string[])
     const [spicesWeight, setSpicesWeight] = useState(newRecipeData && newRecipeData.weight ? newRecipeData.weight.total : 0.2)
     const [spicesComment, setSpicesComment] = useState(newRecipeData ? newRecipeData.additionally : '')
@@ -48,7 +48,7 @@ const SpicesForm = () => {
                 {spices && <IntegerStep title={'% от веса будущего сыра'} minRange={0} maxRange={2} step={0.1}
                                         postfix={'%'} value={spicesWeight} callback={setSpicesWeight}
                 />}
-                {spices && <TextArea rows={4} placeholder="комментарии по применинию" maxLength={6} value={spicesComment}
+                {spices && <TextArea rows={4} placeholder="комментарии по применинию" value={spicesComment}
                           onChange={onTextAreaChangeHandler}
                 />}
             </div>

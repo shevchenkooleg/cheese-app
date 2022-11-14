@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {TestParamsType} from "../bll/slices/tetsSlice";
+import {CreateEnzymeParamsType, CreateLeavenParamsType, CreateRecipeParamsType} from "../bll/types";
 
 enum BASE_URLS {
     LOCAL = 'http://localhost:3000',
@@ -19,12 +19,29 @@ export const cheeseAPI = {
     getNote(id: string) {
         return instance.get(`api/notes/${id}`);
     },
-    createTestNote(params: TestParamsType) {
-        console.log(params)
-        return instance.post('api/test', params);
+    getAllRecipe() {
+        return instance.get(`api/recipe`);
     },
-    deleteNote(id: string) {
-        return instance.delete(`api/notes/${id}`);
+    createRecipe(params: CreateRecipeParamsType) {
+        console.log(params)
+        return instance.post('api/recipe', params);
+    },
+    deleteRecipe(id: string) {
+        return instance.delete(`api/recipe/${id}`);
+    },
+    createLeavenObject(params: CreateLeavenParamsType) {
+        console.log(params)
+        return instance.post('api/leaven', params);
+    },
+    getAllLeavenObjects() {
+        return instance.get(`api/leaven`);
+    },
+    createEnzymeObject(params: CreateEnzymeParamsType) {
+        console.log(params)
+        return instance.post('api/enzyme', params);
+    },
+    getAllEnzymeObjects() {
+        return instance.get(`api/enzyme`);
     },
     updateNote(id: string, title?: string, note_text?: string, color?: string, note_mode?: NoteViewType, pinned?:boolean) {
         return instance.put(`api/notes/${id}`, {

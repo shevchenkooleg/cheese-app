@@ -3,9 +3,9 @@ import Navbar from "../../src/component/Navbar";
 import Link from "next/link";
 
 const navigation = [
-    {id: 1, title: 'Home', path: '/'},
-    {id: 2, title: 'Assistant', path: '/assistant'},
-    {id: 3, title: 'Settings', path: '/settings'},
+    {id: 1, title: 'Домой', path: '/'},
+    {id: 2, title: 'Помощник', path: '/assistant'},
+    {id: 3, title: 'Настройки', path: '/settings'},
 ]
 
 
@@ -19,7 +19,8 @@ const Library = () => {
                 </div>
                 <div className={s.main}>
                     <Link href={'/library/cheeses'} className={s.listElement}>Сыры</Link>
-                    <Link href={'/library/leaven'} className={s.listElement}>Закваски</Link>
+                    <Link href={'/library/leavens'} className={s.listElement}>Закваски</Link>
+                    <Link href={'/library/enzymes'} className={s.listElement}>Ферменты</Link>
                 </div>
                 <Navbar navigation={navigation}/>
             </div>

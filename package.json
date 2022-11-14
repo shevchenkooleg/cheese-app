@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.8.6",
     "@types/mongoose": "^5.11.97",
     "@types/node": "18.11.9",

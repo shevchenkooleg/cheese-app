@@ -69,7 +69,7 @@ const CuttingForm = () => {
                 <IntegerStep title={'Время вымешивания'} minRange={0} maxRange={40} postfix={'min'} value={kneadingTime}
                              callback={setKneadingTime}
                 />
-                <MyCheckBox title={'Второе нагревание'} callback={setSecondHeating} isChecked={secondHeating}
+                <MyCheckBox title={'Второе нагревание'} callback={setSecondHeating} isChecked={!!secondHeating}
                             style={{'fontSize': '16px', 'marginTop': '20px'} as CSSProperties}
                 />
                 {secondHeating && <DoubleSlider title={'Температура второго нагревания'} minRange={35} maxRange={45}
