@@ -23,13 +23,13 @@ const Constructor = () => {
     const onSubmitHandler = () => {
         const leavenObjectForDB = {
             title: titleValue,
-            leavenPowerMin: leavenPower[0],
-            leavenPowerMax: leavenPower[1],
+            leavenPower: {min: leavenPower[0], max: leavenPower[1]},
             initialWeight,
             leavenConcentration,
             dateOfManufacture,
             dateOfPacketOpen,
         }
+
         dispatch(createLeavenObject(leavenObjectForDB))
     }
 

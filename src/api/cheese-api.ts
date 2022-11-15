@@ -16,6 +16,9 @@ export const cheeseAPI = {
     getTestNotes() {
         return instance.get(`api/test`);
     },
+    createTestNote(params: any){
+        return instance.post('api/test', params)
+    },
     getNote(id: string) {
         return instance.get(`api/notes/${id}`);
     },

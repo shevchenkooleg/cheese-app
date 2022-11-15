@@ -155,39 +155,34 @@ export type DBRecipeObjectType = {
 }
 
 export type CreateLeavenParamsType = {
-    title: string,
-    leavenPowerMin: number,
-    leavenPowerMax: number,
-    leavenConcentration: string,
-    initialWeight: number,
-    dateOfManufacture: string,
+    title: string
+    leavenPower: DataRangeType
+    leavenConcentration: string
+    initialWeight: number
+    dateOfManufacture: string
     dateOfPacketOpen: string
 }
 export type LeavenObjectType = {
     _id: string
-    title: string,
-    leavenPowerMin: number,
-    leavenPowerMax: number,
-    leavenConcentration: string,
-    initialWeight: number,
-    dateOfManufacture: string,
+    title: string
+    leavenPower: DataRangeType
+    leavenConcentration: string
+    initialWeight: number
+    dateOfManufacture: string
     dateOfPacketOpen: string
 }
 export type CreateEnzymeParamsType = {
-    title: string,
-    enzymePowerMin: number,
-    enzymePowerMax: number,
-    initialWeight: number,
-    bestBeforeDate: string,
+    title: string
+    enzymePower: DataRangeType
+    bestBeforeDate: string
     dateOfPacketOpen: string
 }
 export type EnzymeObjectType = {
     _id: string
-    title: string,
-    enzymePowerMin: number,
-    enzymePowerMax: number,
-    initialWeight: number,
-    bestBeforeDate: string,
+    title: string
+    enzymePower: DataRangeType
+    initialWeight: number
+    bestBeforeDate: string
     dateOfPacketOpen: string
 }
 

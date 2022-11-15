@@ -15,8 +15,7 @@ type LeavenCardPropsType = {
 
 const LeavenCard: React.FC<LeavenCardPropsType> = ({leaven}) => {
 
-    const {title, _id, dateOfPacketOpen, leavenConcentration, leavenPowerMax,
-        leavenPowerMin, initialWeight} = leaven
+    const {title, _id, dateOfPacketOpen, leavenConcentration, leavenPower, initialWeight} = leaven
     const router = useRouter()
     console.log(router)
 
@@ -39,7 +38,7 @@ const LeavenCard: React.FC<LeavenCardPropsType> = ({leaven}) => {
                     onClick={onDeleteClick}/>
             <div className={s.title}>{title}</div>
             <div>Концентрация закваски: {leavenConcentration}</div>
-            <div>Расчетная дозировка: {leavenPowerMin} - {leavenPowerMax} литров</div>
+            <div>Расчетная дозировка: {leavenPower.min} - {leavenPower.max} литров</div>
             <div>Начальный вес: {initialWeight}</div>
             <div>Дата открытия пакета: {dateOfPacketOpen}</div>
         </div>

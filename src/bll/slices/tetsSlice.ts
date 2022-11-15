@@ -21,7 +21,7 @@ export const getTestNotes = createAsyncThunk('test/getTestNotes', async ()=>{
     }
 })
 
-export const createTestNote = createAsyncThunk('test/createTestNote', async (params: TestParamsType)=> {
+export const createTestNote = createAsyncThunk('test/createTestNote', async (params: any)=> {
     try {
         const res = await cheeseAPI.createTestNote(params)
         console.log(res)

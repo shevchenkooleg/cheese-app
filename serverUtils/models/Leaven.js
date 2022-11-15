@@ -4,8 +4,10 @@ const Schema = mongoose.Schema
 
 const LeavenSchema = new Schema({
         title: String,
-        leavenPowerMin: Number,
-        leavenPowerMax: Number,
+        leavenPower: {
+                min: { type: Number },
+                max: { type: Number }
+        },
         initialWeight: Number,
         leavenConcentration: String,
         dateOfManufacture: String,

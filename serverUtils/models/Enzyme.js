@@ -4,7 +4,10 @@ const Schema = mongoose.Schema
 
 const EnzymeSchema = new Schema({
     title: String,
-    enzymePowerMin: Number,
+    enzymePower: {
+        min: { type: Number },
+        max: { type: Number }
+    },
     enzymePowerMax: Number,
     initialWeight: Number,
     bestBeforeDate: String,

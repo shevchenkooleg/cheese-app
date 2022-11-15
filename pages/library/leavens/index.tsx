@@ -7,6 +7,7 @@ import {PATH} from "../../../src/utils/appPath";
 import Navbar from "../../../src/component/Navbar";
 import {getAllLeavens} from "../../../src/bll/slices/leavensSlice";
 import LeavenCard from "../../../src/component/LeavenCard";
+import MyCard from "../../../src/component/uneversal/MyCard";
 
 const leavensNavigation = [
     {id: 1, title: 'Домой', path: PATH.HOME.MAIN},
@@ -59,10 +60,6 @@ const Leavens = () => {
                             </button>
                         </div>
                         <div className={s.table}>
-
-
-
-
                             {leavens[0] && leavens.map(el =>
                                 <LeavenCard key={el._id} setModalShow={setVisible}
                                             setTitle={setTitle} setIdForDelete={setIdForDelete} leaven={el}/>

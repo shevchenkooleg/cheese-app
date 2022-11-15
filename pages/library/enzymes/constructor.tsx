@@ -21,8 +21,7 @@ const Constructor = () => {
     const onSubmitHandler = () => {
         const enzymeObjectForDB = {
             title: titleValue,
-            enzymePowerMin: enzymePower[0],
-            enzymePowerMax: enzymePower[1],
+            enzymePower: {min: enzymePower[0], max: enzymePower[1]},
             initialWeight,
             bestBeforeDate,
             dateOfPacketOpen,

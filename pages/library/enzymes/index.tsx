@@ -7,6 +7,7 @@ import {PATH} from "../../../src/utils/appPath";
 import Navbar from "../../../src/component/Navbar";
 import {getAllEnzymes} from "../../../src/bll/slices/enzymeSlice";
 import EnzymeCard from "../../../src/component/EnzymeCard";
+import MyCard from "../../../src/component/uneversal/MyCard";
 
 const leavensNavigation = [
     {id: 1, title: 'Домой', path: PATH.HOME.MAIN},
@@ -58,10 +59,6 @@ const Enzymes = () => {
                             </button>
                         </div>
                         <div className={s.table}>
-
-
-
-
                             {!!enzymes && enzymes.map(enz =>
                                 <EnzymeCard key={enz._id} setModalShow={setVisible}
                                             setTitle={setTitle} setIdForDelete={setIdForDelete} enzyme={enz}/>

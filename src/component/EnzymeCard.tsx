@@ -14,7 +14,7 @@ type EnzymeCardPropsType = {
 
 const EnzymeCard: React.FC<EnzymeCardPropsType> = ({enzyme}) => {
 
-    const {title, _id, dateOfPacketOpen, initialWeight, enzymePowerMax, enzymePowerMin, bestBeforeDate} = enzyme
+    const {title, _id, dateOfPacketOpen, initialWeight, enzymePower, bestBeforeDate} = enzyme
     const router = useRouter()
     console.log(router)
 
@@ -33,7 +33,7 @@ const EnzymeCard: React.FC<EnzymeCardPropsType> = ({enzyme}) => {
             <Button shape="circle" type={"text"} className={s.deleteButton} icon={<DeleteOutlined style={{color: '#ffffff'}}/>}
                     onClick={onDeleteClick}/>
             <div className={s.title}>{title}</div>
-            <div>Расчетная дозировка: {enzymePowerMin} - {enzymePowerMax} литров</div>
+            <div>Расчетная дозировка: {enzymePower.min} - {enzymePower.max} литров</div>
             <div>Начальный вес: {initialWeight}</div>
             <div>Дата открытия пакета: {dateOfPacketOpen}</div>
             <div>Срок годности: {bestBeforeDate}</div>
